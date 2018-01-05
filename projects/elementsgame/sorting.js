@@ -1,10 +1,13 @@
+// Current sort mode
 let sortMode = 0;
 
+// Go to next sort mode
 function nextSortMode() {
   sortMode = (sortMode + 1) % 7;
 
 }
 
+// Sort array based on current sort mode
 function aSort(arr) {
   newArr = arr.slice(0);
   switch(sortMode) {
@@ -25,6 +28,7 @@ function aSort(arr) {
   }
 }
 
+// Get the name of the current sort mode
 function getSortModeName() {
   switch(sortMode) {
     case 0:
@@ -42,18 +46,21 @@ function getSortModeName() {
     case 6:
       return 'Random';
   }
-  return "Mode " + mode;
+  return 'Mode ' + mode;
 }
 
+// Sort in order of the list
 function creationSort(arr) {
   return arr;
 }
 
+// Sort alphabetically
 function nameSort(arr) {
   arr.sort()
   return arr;
 }
 
+// Sort by class
 function classSort(arr) {
   arr.sort();
   arr.sort(function(a, b) {
@@ -67,6 +74,7 @@ function classSort(arr) {
   return arr;
 }
 
+// Sort randomly
 function randomSort(arr) {
   arr.sort(function(a, b) {
     return random() - 0.5;

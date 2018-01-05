@@ -1,3 +1,4 @@
+// Classes and their color
 let classes = [
   ['null',    0,   0,   0  ],
   ['water',   5,   30,  140],
@@ -17,6 +18,7 @@ let classes = [
   ['computer',170, 170, 180]
 ]
 
+// Elements and their class
 let elements = [
   ['Water', 'water'],
   ['Earth', 'earth'],
@@ -114,6 +116,7 @@ let elements = [
   ['Zombie', 'death']
 ]
 
+// Recipes: two inputs and some outputs
 let recipes = [
   ['Water',  'Earth',  ['Mud']],
   ['Fire',   'Earth',  ['Lava']],
@@ -209,15 +212,17 @@ let recipes = [
   ['Corpse', 'Life',   ['Zombie']]
 ]
 
+// Get the outputs when two elements are combined
 function getOutputs(e1, e2) {
   for(let r = 0; r < recipes.length; r++) {
-    if(recipes[r][0] == e1 && recipes[r][1] == e2 || recipes[r][0] == e2 && recipes[r][1] == e1) {
+    if((recipes[r][0] == e1 && recipes[r][1] == e2) || (recipes[r][0] == e2 && recipes[r][1] == e1)) {
       return recipes[r][2];
     }
   }
   return null;
 }
 
+// Get the color of a class
 function getColor(clazz) {
   for(let c = 0; c < classes.length; c++) {
     if(classes[c][0] == clazz) {
@@ -226,6 +231,7 @@ function getColor(clazz) {
   }
 }
 
+// Get the class of an element
 function getClass(element) {
   let clazz = classes[0][0];
   for(let e = 0; e < elements.length; e++) {
@@ -236,6 +242,7 @@ function getClass(element) {
   return clazz;
 }
 
+// The help text shown when 'q' is pressed
 let helpText =
 'Click on an element to select it and then click' +
 ' on another one to combine them. Try to get all ' +
