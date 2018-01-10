@@ -2,7 +2,7 @@ let mode;
 let rand;
 
 function randomize() {
-  mode = random([0, 1, 2]);
+  mode = random([0, 1, 2, 3]);
   rand = random(0, 1);
 }
 
@@ -11,6 +11,7 @@ function getColor(x, y) {
     case 0: return noiseColor(x, y);
     case 1: return randomBlueGreenColor(x, y);
     case 2: return radiantColor(x, y);
+    case 3: return pinkColor(x, y);
   }
 }
 
@@ -26,16 +27,19 @@ function randomBlueGreenColor(x, y) {
 	return [r, g, b];
 }
 
-function noiseColor(x, y) {
-	let n = map(noise(x/200, y/200, rand*1000), 0, 1, -50, 305);
-	return [n, n, n];
-}
-
 function radiantColor(x, y) {
   let hu = dist(width/2, height/2, x, y)/dist(0, 0, width/2, height/2);
   return hsvToRgb(hu, 1, 1);
 }
 
+function pinkColor(x, y) {
+  let c1 = random(160, 255);
+  let c2 = random(0, 160);
+  let c3 = random(0, 160);
+  return [max(c1, max(c2, c3)), min(c1, min(c2, c3)), max(min(c1,c2), min(max(c1,c2),c3))];
+}
+
+// https://gist.github.com/mjackson/5311256
 function hsvToRgb(h, s, v) {
   var r, g, b;
   var i = Math.floor(h * 6);
