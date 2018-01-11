@@ -5,7 +5,7 @@ let spacing;
 function setup() {
 	createCanvas(600, 600);
 	spacing = width/6;
-	init();
+	loadJSON('levels.json', gotLevels);
 }
 
 function draw() {
