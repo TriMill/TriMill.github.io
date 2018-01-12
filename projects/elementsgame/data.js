@@ -246,7 +246,18 @@ function getClass(element) {
 let helpText =
 'Click on an element to select it and then click' +
 ' on another one to combine them. Try to get all ' +
-elements.length + '!\n' +
+elements.length + '!' +
+'\n \n' +
+'A hint will select an element that you can combine' +
+' with another element you have to create something' +
+' you do not have.' +
+'\n \n' +
+'Sorting modes will sort your elements either by' +
+' order added, alphabetically, by class, or randomly.' +
+'\n \n' +
+'Some elements can be combined with themselves. Some' +
+' elements cannot be used in any combinations.' +
+'\n' +
 '\n    Q - View this help message' +
 '\n    M - Change sorting mode' +
 '\n    T - Show/hide time' +
