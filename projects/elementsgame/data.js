@@ -250,5 +250,6 @@ elements.length + '!\n' +
 '\n    Q - View this help message' +
 '\n    M - Change sorting mode' +
 '\n    T - Show/hide time' +
+'\n    H - Use a hint' +
 '\n    Enter - Recalculate' +
 '\n    Mouse Wheel - Scrolling';

@@ -2,6 +2,10 @@
 let found = ['Water', 'Earth', 'Fire', 'Air'];
 // Sorted list of elements
 let sortedFound = found;
+// Number of hints available
+let numHints = 1;
+// Next number of milliseconds after start to give new hint at
+let nextHint = 60000;
 
 // Index of selected element
 let curIndex = -1;
@@ -19,8 +23,20 @@ function draw() {
 	// Black background
 	background(0);
 	noStroke();
+	manageHints();
 	drawFound();
 	showText();
+}
+
+function manageHints() {
+	if(numHints < 5) {
+		if(millis() >= nextHint) {
+			numHints++;
+			nextHint = millis() + 60000;
+		}
+	} else {
+		nextHint = millis() + 60000;
+	}
 }
 
 function showText() {
@@ -41,6 +57,10 @@ function showText() {
 		let sec = ('0' + floor((millis()/1000)%60)).slice(-2);
 		text('Time: ' + min + ':' + sec, 597, 15);
 	}
+	textAlign(CENTER, CENTER);
+	// Show number of hints and time until next hint
+	let timeText = (numHints >= 5) ? '' : ' (' + ceil((nextHint - millis())/1000) + ' sec)';
+	text('Hints: ' + numHints + timeText, 300, 585);
 }
 
 function drawFound() {
@@ -98,8 +118,29 @@ function getIndexOfCoords(x, y) {
 	return ex + (ey + offset)*9;
 }
 
+// Selects an element that can be used right now
 function getHint() {
-	// TODO Implement hints, new hint every few minutes, hints select one element that can be used
+	// If all elements have been found
+	if(found.length >= elements.length) return false;
+	// Select random elements until one works
+	let e1 = random(found);
+	while(true) {
+		// Go through each of the elements
+		for(let i = 0; i < found.length; i++) {
+			let outputs = getOutputs(e1, found[i]);
+			let hasOutput = false;
+			for(let i = 0; outputs != null && i < outputs.length; i++) {
+				if(found.indexOf(outputs[i]) < 0) hasOutput = true;
+			}
+			// If the random element can be combined with another element to produce new
+			// results, select it and return
+			if(outputs != null && hasOutput) {
+				curIndex = found.indexOf(e1);
+				return true;
+			}
+		}
+		e1 = random(found);
+	}
 }
 
 // When adding, removing, or changing found elements always call this immediately after

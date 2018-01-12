@@ -35,6 +35,12 @@ function keyTyped() {
   } else if(key == 't') {
 		// Show/hide stopwatch
 		showTime = !showTime;
+	} else if(key == 'h') {
+		// Try to give a hint
+		if(numHints > 0) {
+			getHint();
+			numHints--;
+		}
 	} else if(keyCode = ENTER) {
 		// Recalculate
 		foundUpdated();
