@@ -4,4 +4,4 @@
 ### Intended behavior
 
 
-### Steps to reporduce
+### Steps to reproduce
