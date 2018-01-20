@@ -1,5 +1,9 @@
 function getCookie() {
-  found = Cookies.get('found')['list'];
+  let n = Cookies.get('found')['list'];
+  console.log(n);
+  if(n != undefined) {
+    found = n;
+  }
 }
 
 function setCookie() {
