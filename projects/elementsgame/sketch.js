@@ -17,6 +17,8 @@ let showTime = true;
 function setup() {
 	createCanvas(600, 600);
 	foundUpdated();
+	getCookie();
+	setCookie();
 }
 
 function draw() {
@@ -146,4 +148,5 @@ function getHint() {
 // When adding, removing, or changing found elements always call this immediately after
 function foundUpdated() {
 	sortedFound = aSort(found);
+	setCookie();
 }
