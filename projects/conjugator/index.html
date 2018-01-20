@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="TriMill">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Conjugator - TriMill</title>
+
+	<script src="sketch.js"></script>
+	<script src="type1.js"></script>
+	<script src="type2.js"></script>
+
+	<style>
+		body {
+			margin: 1em;
+			padding: 0;
+			font-family: sans-serif;
+		}
+		table, th, td {
+			padding-left: 5px;
+			padding-right: 5px;
+    	border: 1px solid black;
+			border-collapse: collapse;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h3>Conjugate an infinitive</h3>
+	<p>Enter a Spanish infinitive</p>
+	<input type="text" id="in-1" value="tomar" placeholder="Enter a Spanish infinitive"></input>
+	<button id="enter-1" onclick="enter1Clicked()">Enter</button>
+	<h3>Convert back to infinitive</h3>
+	<p>Enter a conjugated Spanish verb (present tense only) and select the type of verb</p>
+	<input type="text" id="in-2" value="tomo" placeholder="Enter a conjugated verb"></input>
+	<br>
+  <input type="radio" name="verbtype" id="a-radio" value="a" checked> -ar<br>
+  <input type="radio" name="verbtype" id="e-radio" value="e"> -er<br>
+  <input type="radio" name="verbtype" id="i-radio" value="i"> -ir
+	<br>
+	<button id="enter-2" onclick="enter2Clicked()">Enter</button>
+	<p id="new-inf"></p>
+	<h3>Present-tense conjugations:</h6>
+	<p id="error"></p>
+	<table>
+		<tr>
+			<td> <p id="yo"> </td>
+			<td> <p id="nosotros"> </td>
+		</tr>
+		<tr>
+			<td> <p id="tu"> </td>
+			<td> <p id="vosotros"> </td>
+		</tr>
+		<tr>
+			<td> <p id="el"> </td>
+			<td> <p id="ellos"> </td>
+		</tr>
+	</table>
+	<br><br>
+	<p>This program treats all inputs like regular verbs. DON'T USE THIS ON A TEST!</p>
+	<p>Please report bugs in the <a href="https://github.com/TriMill/TriMill.github.io/issues/new" target="_blank"
+	rel="noopener">GitHub issue tracker</a>.</p>
+</body>
+</html>
