@@ -1,5 +1,3 @@
-let savedTime = 0;
-
 function loadCookie() {
   let cookie = Cookies.getJSON('savedata');
   // If no cookie exists, don't try to load one
