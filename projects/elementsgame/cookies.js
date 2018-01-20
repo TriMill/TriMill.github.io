@@ -7,5 +7,6 @@ function getCookie() {
 }
 
 function setCookie() {
+  console.log('Setting cookie');
   Cookies.set('found', {'list':found}, {expires: 30, path: ''});
 }
