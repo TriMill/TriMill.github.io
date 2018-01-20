@@ -40,6 +40,7 @@ function keyTyped() {
 		if(numHints > 0) {
 			getHint();
 			numHints--;
+			saveCookie();
 		}
 	} else if(keyCode = ENTER) {
 		// Recalculate
