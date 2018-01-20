@@ -28,6 +28,6 @@ function saveCookie() {
   Cookies.set('savedata', {
     'list':found,
     'hints':numHints,
-    'time':realMillis();
+    'time':realMillis()
   }, {expires: 30, path: ''});
 }
