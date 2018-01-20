@@ -13,9 +13,7 @@ function loadCookie() {
     if(numHints == undefined) numHints = 1;
     foundUpdated(true);
     savedTime = cookie['time'];
-    if(savedTime != undefined) {
-      nextHint = savedTime + 60000;
-    } else savedTime = 0;
+    if(savedTime == undefined) savedTime = 0;
     foundUpdated(true);
   }
 }

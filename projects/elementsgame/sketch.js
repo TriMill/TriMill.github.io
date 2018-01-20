@@ -35,13 +35,13 @@ function draw() {
 
 function manageHints() {
 	if(numHints < 5) {
-		if(millis() >= nextHint) {
+		if(realMillis() >= nextHint) {
 			numHints++;
-			nextHint = millis() + 60000;
+			nextHint = realMillis() + 60000;
 			saveCookie();
 		}
 	} else {
-		nextHint = millis() + 60000;
+		nextHint = realMillis() + 60000;
 	}
 }
 
@@ -59,13 +59,13 @@ function showText() {
 	// Show stopwatch if supposed to
 	if(showTime) {
 		textAlign(RIGHT, CENTER);
-		let min = ('0' + floor(millis()/60000)).slice(-2);
-		let sec = ('0' + floor((millis()/1000)%60)).slice(-2);
+		let min = ('0' + floor(realMillis()/60000)).slice(-2);
+		let sec = ('0' + floor((realMillis()/1000)%60)).slice(-2);
 		text('Time: ' + min + ':' + sec, 597, 15);
 	}
 	textAlign(CENTER, CENTER);
 	// Show number of hints and time until next hint
-	let timeText = (numHints >= 5) ? '' : ' (' + ceil((nextHint - millis())/1000) + ' sec)';
+	let timeText = (numHints >= 5) ? '' : ' (' + ceil((nextHint - realMillis())/1000) + ' sec)';
 	text('Hints: ' + numHints + timeText, 300, 585);
 }
 
