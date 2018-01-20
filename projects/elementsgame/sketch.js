@@ -18,7 +18,6 @@ function setup() {
 	createCanvas(600, 600);
 	foundUpdated();
 	getCookie();
-	setCookie();
 }
 
 function draw() {
