@@ -7,5 +7,5 @@ function getCookie() {
 }
 
 function setCookie() {
-  Cookies.set('found', {'list':found});
+  Cookies.set('found', {'list':found}, {expires: 30, path: ''});
 }
