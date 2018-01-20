@@ -17,12 +17,14 @@ let showTime = true;
 function setup() {
 	createCanvas(600, 600);
 	getCookie();
-	foundUpdated();
 }
 
 function draw() {
 	// Black background
 	background(0);
+	if(frameCount == 0) {
+		foundUpdated();
+	}
 	noStroke();
 	manageHints();
 	drawFound();
