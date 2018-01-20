@@ -14,7 +14,7 @@ let classes = [
   ['space',   20,  20,  30 ],
   ['wood',    70,  40,  0  ],
   ['food',    110, 50,  130],
-  ['tools',   210, 200, 200],
+  ['tools',   230, 220, 220],
   ['computer',170, 170, 180]
 ]
 
@@ -113,7 +113,10 @@ let elements = [
   ['Meme', 'computer'],
   ['Corpse', 'death'],
   ['Bone', 'death'],
-  ['Zombie', 'death']
+  ['Zombie', 'death'],
+  ['Alien', 'death'],
+  ['Rainbow', 'air'],
+  ['Unicorn', 'animal']
 ]
 
 // Recipes: two inputs and some outputs
@@ -202,14 +205,17 @@ let recipes = [
   ['Wire',   'Wire',   ['Computer']],
   ['Human',  'Computer', ['Robot']],
   ['Computer', 'Computer', ['Network']],
-  ['Network', 'Network', ['Internet']],
+  ['Network','Network',['Internet']],
   ['Human',  'Mammal', ['Pet']],
   ['Pet',    'Fish',   ['Cat']],
   ['Pet',    'Bone',   ['Dog']],
   ['Cat',    'Internet', ['Meme']],
   ['Human',  'Fire',   ['Corpse']],
   ['Corpse', 'Fire',   ['Bone', 'Ash']],
-  ['Corpse', 'Life',   ['Zombie']]
+  ['Corpse', 'Life',   ['Zombie']],
+  ['Planet', 'Life',   ['Alien']],
+  ['Star',   'Rain',   ['Rainbow']],
+  ['Rainbow','Mammal', ['Unicorn']]
 ]
 
 // Get the outputs when two elements are combined
