@@ -20,7 +20,7 @@ function loadCookie() {
 }
 
 function saveCookie() {
-  console.log('Saving: ' + found);
+  console.log('Saving following: \nFound: ' + found + '\nHints: ' + numHints + '\nTime: ' + realMillis());
   // Set the cookie
   Cookies.set('savedata', {
     'list':found,
