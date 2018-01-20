@@ -1,5 +1,5 @@
 function getCookie() {
-  let n = Cookies.get('found')['list'];
+  let n = Cookies.getJSON('found')['list'];
   console.log(n);
   if(n != undefined) {
     found = n;
