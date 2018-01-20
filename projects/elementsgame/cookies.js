@@ -1,6 +1,6 @@
 function getCookie() {
   let cookie = Cookies.getJSON('found');
-  if(n != undefined) {
+  if(cookie != undefined) {
     let chip = cookie['list'];
     console.log(chip);
     if(chip != undefined) {
