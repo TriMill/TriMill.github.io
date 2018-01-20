@@ -1,9 +1,12 @@
 function getCookie() {
-  let n = Cookies.getJSON('found')['list'];
-  console.log(n);
+  let cookie = Cookies.getJSON('found');
   if(n != undefined) {
-    found = n;
-    foundUpdated();
+    let chip = cookie['list'];
+    console.log(chip);
+    if(chip != undefined) {
+      found = chip;
+      foundUpdated();
+    }
   }
 }
 
