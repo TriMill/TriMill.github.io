@@ -8,13 +8,14 @@ function loadCookie() {
       console.log('Loaded save: ' + chip);
       // Set found elements to cookie
       found = chip;
-      foundUpdated(true);
     }
+    numHints = cookie['hints'];
+    foundUpdated(true);
   }
 }
 
 function saveCookie() {
   console.log('Saving: ' + found);
   // Set the cookie
-  Cookies.set('found', {'list':found}, {expires: 30, path: ''});
+  Cookies.set('found', {'list':found, 'hints':numHints}, {expires: 30, path: ''});
 }

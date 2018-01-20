@@ -36,6 +36,7 @@ function manageHints() {
 		if(millis() >= nextHint) {
 			numHints++;
 			nextHint = millis() + 60000;
+			saveCookie();
 		}
 	} else {
 		nextHint = millis() + 60000;
