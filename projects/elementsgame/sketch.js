@@ -16,8 +16,8 @@ let showTime = true;
 
 function setup() {
 	createCanvas(600, 600);
-	foundUpdated();
 	getCookie();
+	foundUpdated();
 }
 
 function draw() {
