@@ -6,6 +6,8 @@ let sortedFound = found;
 let numHints = 1;
 // Next number of milliseconds after start to give new hint at
 let nextHint = 60000;
+// Saved time for cookies
+let savedTime = 0;
 
 // Index of selected element
 let curIndex = -1;
@@ -145,6 +147,10 @@ function getHint() {
 		}
 		e1 = random(found);
 	}
+}
+
+function realMillis() {
+	return millis() + savedTime;
 }
 
 // When adding, removing, or changing found elements always call this immediately after
