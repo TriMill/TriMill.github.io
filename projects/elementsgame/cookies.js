@@ -10,6 +10,7 @@ function loadCookie() {
       found = chip;
     }
     numHints = cookie['hints'];
+    if(numHints == undefined) numHints = 1;
     foundUpdated(true);
   }
 }
