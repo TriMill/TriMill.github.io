@@ -3,6 +3,7 @@ function getCookie() {
   console.log(n);
   if(n != undefined) {
     found = n;
+    foundUpdated();
   }
 }
 
