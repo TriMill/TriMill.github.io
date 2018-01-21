@@ -14,8 +14,8 @@ let classes = [
   ['space',   20,  20,  30 ],
   ['wood',    70,  40,  0  ],
   ['food',    110, 50,  130],
-  ['tools',   230, 220, 220],
-  ['computer',170, 170, 180]
+  ['tools',   210, 200, 200],
+  ['computer',160, 160, 170]
 ]
 
 // Elements and their class
@@ -116,7 +116,15 @@ let elements = [
   ['Zombie', 'death'],
   ['Alien', 'death'],
   ['Rainbow', 'air'],
-  ['Unicorn', 'animal']
+  ['Unicorn', 'animal'],
+  ['Bonfire', 'fire'],
+  ['Storm', 'air'],
+  ['Hurricane', 'air'],
+  ['Tornado', 'air'],
+  ['Potato', 'food'],
+  ['Fruit', 'plant'],
+  ['Apple', 'food'],
+  ['Watermelon', 'food']
 ]
 
 // Recipes: two inputs and some outputs
@@ -215,7 +223,16 @@ let recipes = [
   ['Corpse', 'Life',   ['Zombie']],
   ['Planet', 'Life',   ['Alien']],
   ['Star',   'Rain',   ['Rainbow']],
-  ['Rainbow','Mammal', ['Unicorn']]
+  ['Rainbow','Mammal', ['Unicorn']],
+  ['Fire', 'Fire', 'Bonfire'],
+  ['Rain',   'Rain',   ['Storm']],
+  ['Storm',  'Wind',   ['Hurricane']],
+  ['Hurricane','Wind', ['Tornado']],
+  ['Plant',  'Earth',  ['Potato']],
+  ['Plant',  'Plant',  ['Fruit']],
+  ['Fruit',  'Tree',   ['Apple']],
+  ['Fruit',  'Water',  ['Watermelon']],
+  ['Fruit',  'Egg',  ['Eggplant']]
 ]
 
 // Get the outputs when two elements are combined
@@ -269,4 +286,5 @@ elements.length + '!' +
 '\n    T - Show/hide time' +
 '\n    H - Use a hint' +
 '\n    Enter - Recalculate' +
-'\n    Mouse Wheel - Scrolling';
+'\n    Mouse Wheel - Scrolling' +
+'\n    X - Clear savedata';

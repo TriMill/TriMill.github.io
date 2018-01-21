@@ -15,6 +15,8 @@ let curIndex = -1;
 let offset = 0;
 // Whether or not to show the stopwatch
 let showTime = true;
+//
+let clearText = false;
 
 function setup() {
 	createCanvas(600, 600);
@@ -24,9 +26,19 @@ function setup() {
 function draw() {
 	// Black background
 	background(0);
+	if(clearText) {
+		noStroke();
+		fill(255, 0, 0)
+		textSize(22);
+		textFont('Calibri');
+		textAlign(CENTER, CENTER);
+		text('Savedata cleared. Please reload the page.\nIf this was a mistake, press ENTER', width/2, height/2);
+		return;
+	}
 	if(frameCount == 0) {
 		foundUpdated();
 	}
+
 	noStroke();
 	manageHints();
 	drawFound();
@@ -67,6 +79,11 @@ function showText() {
 	// Show number of hints and time until next hint
 	let timeText = (numHints >= 5) ? '' : ' (' + ceil((nextHint - realMillis())/1000) + ' sec)';
 	text('Hints: ' + numHints + timeText, 300, 585);
+	if(clearText) {
+		background(0)
+		textAlign(CENTER, CENTER);
+		text('Savedata cleared. Please reload the page ');
+	}
 }
 
 function drawFound() {

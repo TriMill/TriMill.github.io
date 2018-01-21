@@ -42,9 +42,13 @@ function keyTyped() {
 			numHints--;
 			saveCookie();
 		}
-	} else if(keyCode = ENTER) {
+	} else if(key == 'x') {
+		Cookies.remove('savedata', {path: ''});
+		clearText = true;
+  } else if(keyCode == ENTER) {
 		// Recalculate
 		foundUpdated();
+		clearText = false;
   }
 	return false;
 }

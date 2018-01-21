@@ -5,7 +5,7 @@ function loadCookie() {
     // Get found elements from cookie
     let elems = cookie['list'];
     if(elems != undefined) {
-      console.log('Loaded save: ' + elems);
+      console.log('Loading');
       // Set found elements to cookie
       found = elems;
     }
@@ -20,7 +20,7 @@ function loadCookie() {
 }
 
 function saveCookie() {
-  console.log('Saving following: \nFound: ' + found + '\nHints: ' + numHints + '\nTime: ' + realMillis());
+  console.log('Saving');
   // Set the cookie
   Cookies.set('savedata', {
     'list':found,
