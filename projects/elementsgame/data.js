@@ -224,7 +224,7 @@ let recipes = [
   ['Planet', 'Life',   ['Alien']],
   ['Star',   'Rain',   ['Rainbow']],
   ['Rainbow','Mammal', ['Unicorn']],
-  ['Fire', 'Fire', 'Bonfire'],
+  ['Fire', 'Fire', ['Bonfire']],
   ['Rain',   'Rain',   ['Storm']],
   ['Storm',  'Wind',   ['Hurricane']],
   ['Hurricane','Wind', ['Tornado']],
