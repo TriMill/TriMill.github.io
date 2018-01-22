@@ -122,7 +122,7 @@ let elements = [
   ['Hurricane', 'air'],
   ['Tornado', 'air'],
   ['Potato', 'food'],
-  ['Fruit', 'plant'],
+  ['Fruit', 'life'],
   ['Apple', 'food'],
   ['Watermelon', 'food']
 ]
