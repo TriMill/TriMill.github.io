@@ -100,7 +100,7 @@ let elements = [
   ['Sheep', 'animal'],
   ['Worker', 'human'],
   ['Blacksmith', 'human'],
-  ['Shepard', 'human'],
+  ['Sheperd', 'human'],
   ['Farmer', 'human'],
   ['Wire', 'computer'],
   ['Robot', 'computer'],
@@ -124,7 +124,15 @@ let elements = [
   ['Potato', 'food'],
   ['Fruit', 'life'],
   ['Apple', 'food'],
-  ['Watermelon', 'food']
+  ['Watermelon', 'food'],
+  ['Crab', 'animal'],
+  ['Milk', 'food'],
+  ['Butter', 'food'],
+  ['Forest', 'life'],
+  ['Jungle', 'life'],
+  ['Banana', 'food'],
+  ['Skyscraper', 'human'],
+  ['Goldfish', 'animal']
 ]
 
 // Recipes: two inputs and some outputs
@@ -207,7 +215,7 @@ let recipes = [
   ['Mammal', 'Cloud',  ['Sheep']],
   ['Human',  'Axe',    ['Worker']],
   ['Worker', 'Metal',  ['Blacksmith']],
-  ['Worker', 'Sheep',  ['Shepard']],
+  ['Worker', 'Sheep',  ['Sheperd']],
   ['Worker', 'Wheat',  ['Farmer']],
   ['Metal',  'Electricity', ['Wire']],
   ['Wire',   'Wire',   ['Computer']],
@@ -232,7 +240,15 @@ let recipes = [
   ['Plant',  'Plant',  ['Fruit']],
   ['Fruit',  'Tree',   ['Apple']],
   ['Fruit',  'Water',  ['Watermelon']],
-  ['Fruit',  'Egg',  ['Eggplant']]
+  ['Fruit',  'Egg',    ['Eggplant']],
+  ['Fish',   'Earth',  ['Crab']],
+  ['Cow',    'Water',  ['Milk']],
+  ['Milk',   'Energy', ['Butter']],
+  ['Tree',   'Tree',   ['Forest']],
+  ['Forest', 'Monkey', ['Jungle']],
+  ['Fruit',  'Monkey', ['Banana']],
+  ['Metal',  'City',   ['Skyscraper']],
+  ['Fish', 'Pet', ['Goldfish']]
 ]
 
 // Get the outputs when two elements are combined
