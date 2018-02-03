@@ -133,7 +133,12 @@ let elements = [
   ['Jungle', 'life'],
   ['Banana', 'food'],
   ['Skyscraper', 'human'],
-  ['Goldfish', 'animal']
+  ['Goldfish', 'animal'],
+  ['Wheel', 'wood'],
+  ['Car', 'computer'],
+  ['Book', 'tools'],
+  ['Children', 'human'],
+  ['School', 'human']
 ]
 
 // Recipes: two inputs and some outputs
@@ -249,7 +254,12 @@ let recipes = [
   ['Forest', 'Monkey', ['Jungle']],
   ['Fruit',  'Monkey', ['Banana']],
   ['Metal',  'City',   ['Skyscraper']],
-  ['Fish', 'Pet', ['Goldfish']]
+  ['Fish',   'Pet',    ['Goldfish']],
+  ['Energy', 'Wood',   ['Wheel']]
+  ['Wheel',  'Metal',  ['Car']],
+  ['Paper',  'Paper',  ['Book']],
+  ['Family', 'Love',   ['Children']],
+  ['House',  'Children', ['School']]
 ]
 
 // Get the outputs when two elements are combined
