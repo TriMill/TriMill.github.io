@@ -5,6 +5,7 @@ let lines = [];
 const LENGTH = 8;
 const SPEED = 7;
 const CHANGE = 0.1;
+const DIAMETER = 8;
 let xoff, yoff;
 let moved = false;
 
@@ -54,13 +55,19 @@ function drawLine(index) {
 	if(lines[index] == undefined) return;
 	let p1 = lines[index][0];
 	let p2 = lines[index][1];
+	if((  p1.x < -DIAMETER-xoff || p1.x > width +DIAMETER-xoff
+		||  p1.y < -DIAMETER-yoff || p1.y > height+DIAMETER-yoff)
+		&& (p2.x < -DIAMETER-xoff || p2.x > width +DIAMETER-xoff
+		||  p2.y < -DIAMETER-yoff || p2.y > height+DIAMETER-yoff)) {
+		return;
+	}
 	stroke(250, 100);
 	noFill();
 	line(p1.x, p1.y, p2.x, p2.y);
 	noStroke();
 	fill(250, 100);
-	ellipse(p1.x, p1.y, 8);
-	ellipse(p2.x, p2.y, 8);
+	ellipse(p1.x, p1.y, DIAMETER);
+	ellipse(p2.x, p2.y, DIAMETER);
 }
 
 let lastX = 0;
