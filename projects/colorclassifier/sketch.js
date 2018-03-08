@@ -1,21 +1,34 @@
 let samples = [
-	['Red', 			[255, 0  , 0  ]],
-	['Orange', 		[255, 120, 0  ]],
-	['Yellow', 		[255, 255, 0  ]],
-	['Green', 		[0  , 255, 0  ]],
-	['Cyan', 			[0  , 240, 255]],
-	['Aqua', 			[0  , 230, 190]],
-	['Blue', 			[0  , 0  , 255]],
-	['Periwinkle',[150, 170, 230]],
-	['Magenta', 	[255, 0  , 255]],
-	['Purple', 		[120, 0  , 150]],
-	['Black', 		[0  , 0  , 0  ]],
-	['Gray',			[150, 150, 150]],
-	['White',			[255, 255, 255]],
-	['Pink', 			[255, 200, 200]]
+	['Red', 				[255, 0  , 0  ]],
+	['Dark Red', 		[140, 0  , 0  ]],
+	['Salmon', 			[255, 128, 115]],
+	['Peach', 			[255, 230, 180]],
+	['Orange', 			[255, 120, 0  ]],
+	['Yellow', 			[255, 255, 0  ]],
+	['Gold', 				[255, 190, 40 ]],
+	['Yellow Green',[175, 255, 50 ]],
+	['Green', 			[0  , 255, 0  ]],
+	['Dark Green',	[0  , 128, 30 ]],
+	['Olive Green',	[140, 190, 60 ]],
+	['Forest Green',[  0, 110, 70 ]],
+	['Cyan', 				[0  , 240, 255]],
+	['Aqua', 				[0  , 230, 190]],
+	['Blue', 				[0  , 0  , 255]],
+	['Dark Blue',		[0  , 30 , 128]],
+	['Teal', 				[70 , 170, 170]],
+	['Periwinkle',	[150, 170, 230]],
+	['Magenta', 		[255, 0  , 255]],
+	['Purple', 			[120, 0  , 150]],
+	['Hot Pink', 		[255, 70 , 180]],
+	['Pink', 				[255, 200, 200]],
+	['Black', 			[0  , 0  , 0  ]],
+	['Gray',				[150, 150, 150]],
+	['White',				[255, 255, 255]],
+	['Chestnut', 		[150, 80 , 20 ]],
+	['Brown', 			[160, 120, 80 ]]
 ]
 
-let lightColors = ['White', 'Yellow'];
+let lightColors = ['White', 'Yellow', 'Yellow Green'];
 
 let hexchars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
 
@@ -27,23 +40,31 @@ function setup() {
 }
 
 function draw() {
-	background(0);
 	if(code.length == 6) {
 		current = decodeHexCode(code);
 	}
+
 	noStroke();
 
 	let name = identify(current);
 	let underscore = '';
 	if(code.length < 6 && second() % 2 == 0) underscore = '_';
 
+	background(keyIsDown(SHIFT) ? samples[name[2]][1] : current);
 	textSize(20);
 	textFont('Consolas');
 	fill(lightColors.indexOf(name[0]) < 0 ? 255 : 0);
 	textAlign(LEFT, TOP);
 	text('#' + code + underscore, 10, 10);
 	text(name[0], 10, 35);
+	text('Distance: ' + round(name[1]*10)/10, 10, 60);
+	text('Sample: ' + rgbToHex(samples[name[2]][1]), 10, 85);
+	text('Hold SHIFT to view sample', 10, 110);
 }
+
+function componentToHex(c) { return (c.toString(16).length == 1 ? '0' : '') + c.toString(16); }
+
+function rgbToHex(rgb) { return '#' + componentToHex(rgb[0]) + componentToHex(rgb[1]) + componentToHex(rgb[2]); }
 
 function keyPressed() {
 	if(keyCode === BACKSPACE || keyCode === DELETE) {
@@ -62,7 +83,6 @@ function decodeHexCode(hex) {
 }
 
 function identify(col) {
-	background(col);
 	let closest = 'null';
 	// max score is 442
 	let closestScore = 500;
