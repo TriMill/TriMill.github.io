@@ -1,7 +1,7 @@
-const MIN_LENGTH = 3;
-const MAX_LENGTH = 14;
-const FAKE_MAX = 10;
 const SAMPLES = 500000;
+
+let minLength = 3;
+let maxLength = 10;
 
 window.onload = function() {
 	repopulate();
@@ -28,7 +28,7 @@ function repeatRunReturn(times) {
 
 function getGoodChainOutput() {
 	let word = runChain();
-	while(word.length < MIN_LENGTH || word.length > MAX_LENGTH) {
+	while(word.length < minLength || word.length > maxLength) {
 		word = runChain();
 	}
 	return word;
@@ -52,7 +52,7 @@ function doAnalyze() {
 	let final = '';
 	for(let i = 0; i < sorted.length; i++) {
 		final += sorted[i];
-		let ns = FAKE_MAX - sorted[i].length + 1;
+		let ns = Math.ceil((maxLength+1)/2) - sorted[i].length + 1;
 		for(let i = 0; i < ns; i++) { final += '&nbsp;'; }
 		final += '(' + format(Math.round(10000*results[sorted[i]]/SAMPLES)/100, 1, 2) + '%)';
 		final += '<br>';
@@ -78,4 +78,9 @@ function format(number, wholeDigits, decimalDigits) {
 function repopulate() {
 	let corpus = document.getElementById('corpus').value;
 	populateChain(corpus);
+}
+
+function minmax() {
+	minLength = document.getElementById('min_length').value;
+	maxLength = document.getElementById('max_length').value;
 }
