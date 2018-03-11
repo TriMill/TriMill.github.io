@@ -3,12 +3,13 @@ function Particle(x, y) {
   this.vel = createVector(0, 0);
   this.acc = createVector(0, 0);
 
+  this.maxSpeed = random()/2+1.75;
   this.lastPos = createVector(x, y);
 
   this.update = function() {
     this.lastPos = createVector(this.pos.x, this.pos.y);
     this.vel.add(this.acc);
-    this.vel.limit(2);
+    this.vel.limit(this.maxSpeed);
     this.pos.add(this.vel);
     this.acc.mult(0);
     let ch = false;
@@ -24,9 +25,6 @@ function Particle(x, y) {
   }
 
   this.show = function() {
-    //noStroke();
-    //fill(FOREGROUND);
-    //ellipse(this.pos.x, this.pos.y, 1);
     stroke(FOREGROUND);
     line(this.lastPos.x, this.lastPos.y, this.pos.x, this.pos.y);
   }
