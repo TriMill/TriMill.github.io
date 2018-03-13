@@ -1,4 +1,6 @@
 const SAMPLES = 500000;
+const TRIES = 50000;
+const FAILTEXT = 'Input conditions may be impossible: tried ' + TRIES + ' times and failed.';
 
 let minLength = 3;
 let maxLength = 10;
@@ -11,6 +13,10 @@ function repeatRun(times) {
 	document.getElementById('results').innerHTML = '';
 	for(let i = 0; i < times; i++) {
 		let word = getGoodChainOutput();
+		if(word == null) {
+			document.getElementById('results').innerHTML = FAILTEXT;
+			return;
+		}
 		let p = document.createElement("P");
 		p.className = "nospace";
 		p.innerHTML = word;
@@ -21,15 +27,20 @@ function repeatRun(times) {
 function repeatRunReturn(times) {
 	let ret = [];
 	for(let i = 0; i < times; i++) {
-		ret.push(getGoodChainOutput());
+		let ch = getGoodChainOutput();
+		if(ch == null) return null;
+		ret.push(ch);
 	}
 	return ret;
 }
 
 function getGoodChainOutput() {
 	let word = runChain();
+	let i = 0;
 	while(word.length < minLength || word.length > maxLength) {
 		word = runChain();
+		i++
+		if(i > 5000) return null;
 	}
 	return word;
 }
@@ -41,6 +52,9 @@ function analyze() {
 
 function doAnalyze() {
 	let run = repeatRunReturn(SAMPLES);
+	if(run == null) {
+		document.getElementById('results').innerHTML = FAILTEXT;
+	}
 	let results = {};
 	for(let i = 0; i < run.length; i++) {
 		let w = run[i];

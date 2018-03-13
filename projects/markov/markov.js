@@ -16,8 +16,9 @@ function runChain() {
 
 function populateChain(corpus) {
   chain = {_start_:[]};
-  corpus = corpus.replace(/[^\w\s]|_/g, '').replace(/\s+/g, ' ').toLowerCase();
+  corpus = corpus.replace(/[^A-Za-z\s]|_/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
   corpus = ' ' + corpus + ' ';
+	console.log(corpus);
   for(let i = 0; i < corpus.length; i++) {
     if(corpus[i+1] == undefined) break;
     let curr = corpus[i];
