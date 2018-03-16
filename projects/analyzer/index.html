@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="TriMill">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Test Analyzer - TriMill</title>
+
+	<script src="main.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+<body>
+	<h1>Text Analyzer</h1>
+	<p>Enter text and click Analyze to get statistics and word and letter counts</p>
+	<textarea rows="6" cols="90" id="text"></textarea>
+	<p></p>
+	<button id="run" onclick="analyze()">Analyze Text</button>
+	<p></p>
+	<table id="results">
+		<tr> <th>Statistics</th> <th>Character Frequency</th> <th>Word Frequency</th> </tr>
+		<tr> <td></td> <td></td> <td></td> </tr>
+	</table>
+</body>
+</html>
