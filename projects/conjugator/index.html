@@ -7,9 +7,10 @@
 
 	<title>Conjugator - TriMill</title>
 
-	<script src="sketch.js"></script>
-	<script src="type1.js"></script>
-	<script src="type2.js"></script>
+	<script src="dom.js"></script>
+	<script src="data.js"></script>
+	<script src="conjugator.js"></script>
+	<link rel="stylesheet" href="stylesheet.css">
 
 	<style>
 		body {
@@ -27,39 +28,54 @@
 	</style>
 </head>
 <body>
-	<h3>Conjugate an infinitive</h3>
-	<p>Enter a Spanish infinitive</p>
-	<input type="text" id="in-1" value="tomar" placeholder="Enter a Spanish infinitive"></input>
-	<button id="enter-1" onclick="enter1Clicked()">Enter</button>
-	<h3>Convert back to infinitive</h3>
-	<p>Enter a conjugated Spanish verb (present tense only) and select the type of verb</p>
-	<input type="text" id="in-2" value="tomo" placeholder="Enter a conjugated verb"></input>
-	<br>
-  <input type="radio" name="verbtype" id="a-radio" value="a" checked> -ar<br>
-  <input type="radio" name="verbtype" id="e-radio" value="e"> -er<br>
-  <input type="radio" name="verbtype" id="i-radio" value="i"> -ir
-	<br>
-	<button id="enter-2" onclick="enter2Clicked()">Enter</button>
-	<p id="new-inf"></p>
-	<h3>Present-tense conjugations:</h6>
-	<p id="error"></p>
-	<table>
+	<h1>Spanish Verb Conjugator</h1>
+	<div class="tab">
+  	<button class="tabbutton" onclick="openTab(event, 'basic-verb')" id="starting-tab">Verb</button>
+  	<button class="tabbutton" onclick="openTab(event, 'stem-change')">Stem Change</button>
+  	<button class="tabbutton" onclick="openTab(event, 'irregulatities')">Irregularities</button>
+		<button class="tabbutton" onclick="openTab(event, 'conjugations')">Conjugations</button>
+	</div>
+	<div id="basic-verb" class="content">
+	<!--Begin verb and type-->
+	<input type="text" id="verb" placeholder="Enter a Spanish verb..." onchange="verbChanged()"><br>
+	Verb type: <br>
+	<label class="container">-ar
+		<input type="radio" id="verbtype-ar" name="verbtype" onchange="radioChanged()" checked>
+		<span class="checkmark"></span>
+	</label>
+	<label class="container">-er
+		<input type="radio" id="verbtype-er" name="verbtype" onchange="radioChanged()">
+		<span class="checkmark"></span>
+	</label>
+	<label class="container">-ir
+		<input type="radio" id="verbtype-ir" name="verbtype" onchange="radioChanged()">
+		<span class="checkmark"></span>
+	</label>
+	<!--End verb and type-->
+	</div>
+	<div id="stem-change" class="content">
+		This feature is not yet implemented
+	</div>
+	<div id="irregulatities" class="content">
+		This feature is not yet implemented
+	</div>
+	<div id="conjugations" class="content">
+		<table class="no-border">
 		<tr>
-			<td> <p id="yo"> </td>
-			<td> <p id="nosotros"> </td>
+		<td class="right">
+			Infinitive<br>
+			Yo<br>
+			Tú<br>
+			Él/Ella/Usted<br>
+			Nosotros/Nosotras<br>
+			Vosotros/Vosotras<br>
+			Ellos/Ellas/Ustedes<br>
+		</td>
+		<td id="results" class="left">
+
+		</td>
 		</tr>
-		<tr>
-			<td> <p id="tu"> </td>
-			<td> <p id="vosotros"> </td>
-		</tr>
-		<tr>
-			<td> <p id="el"> </td>
-			<td> <p id="ellos"> </td>
-		</tr>
-	</table>
-	<br><br>
-	<p>This program treats all inputs like regular verbs. DON'T USE THIS ON A TEST!</p>
-	<p>Please report bugs in the <a href="https://github.com/TriMill/TriMill.github.io/issues/new" target="_blank"
-	rel="noopener">GitHub issue tracker</a>.</p>
+		<table>
+	</div>
 </body>
 </html>

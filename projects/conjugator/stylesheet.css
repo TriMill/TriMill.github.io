@@ -1,0 +1,104 @@
+* {
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  text-align: left;
+}
+h1, h3 {
+  font-family: Helvetica, Arial, sans-serif;
+}
+h3 {
+  font-size: 15pt;
+}
+.tab {
+  overflow: hidden;
+  border: 1px solid #BBB;
+  background-color: #EEE;
+  border-radius: 4px 4px 0px 0px;
+}
+.tabbutton {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.2s ease;
+  font-size: 13pt;
+}
+.tabbutton:hover {
+  background-color: #DDD;
+}
+.tabbutton[active=true]{
+  background-color: #CCC;
+}
+.content {
+  display: none;
+  padding: 16px;
+  border: 1px solid #BBB;
+  border-top: none;
+  border-radius: 0px 0px 4px 4px;
+}
+input[type=text] {
+  display:block;
+  border: 1px solid #BBB;
+  padding: 3px;
+  border-radius: 4px;
+  transition: 0.2s ease;
+}
+input[type=text]:focus {
+  outline: none;
+  border: 1px solid #88F;
+  transition: 0.2s ease;
+}
+.container {
+  display: block;
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+.container input[type=radio] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  background-color: #EEE;
+  border: 1px solid #BBB;
+  border-radius: 50%;
+}
+input:disabled ~ .checkmark {
+  background-color: #BBB;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+.container .checkmark:after {
+ 	top: 3px;
+	left: 3px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #999;
+}
+.no-border {
+  border-style: hidden;
+}
+.right {
+  text-align: right;
+  border-style: hidden;
+}
+.left {
+  text-align: left;
+  border-style: hidden;
+}
