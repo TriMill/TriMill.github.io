@@ -19,8 +19,20 @@ function openTab(evt, id) {
 }
 
 function getVerbType() {
+  if(document.querySelector('input[name="verbtype"]:checked') == null) return null;
   let id = document.querySelector('input[name="verbtype"]:checked').id;
   return id[9];
+}
+
+function getSelectedStemChange() {
+  let id = document.querySelector('input[name="stemchange"]:checked').id;
+  let name = id.substring(11);
+  if(name == 'none') return null;
+  let parts = name.split('.');
+  for(let i = 0; i < stemChanges.length; i++) {
+    if(stemChanges[i][0] == parts[0] && stemChanges[i][1] == parts[1]) return i;
+  }
+  return null;
 }
 
 function verbChanged() {
@@ -37,6 +49,9 @@ function verbChanged() {
   if(endsWith(verb, suffixesIR)) {
     document.getElementById("verbtype-ir").disabled = false;
   }
+  if(document.querySelector('input[name="verbtype"]:checked').disabled) {
+    document.querySelector('input[name="verbtype"]:checked').checked = false;
+  }
   changeOccured();
 }
 
@@ -48,6 +63,10 @@ function endsWith(str, array) {
 }
 
 function radioChanged() {
+  changeOccured();
+}
+
+function stemChanged() {
   changeOccured();
 }
 
