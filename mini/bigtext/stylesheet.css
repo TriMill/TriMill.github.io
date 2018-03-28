@@ -1,0 +1,62 @@
+* {
+  line-height: 1.2;
+}
+
+input[type="color"] {
+	opacity: 0;
+	display: block;
+	width: 32px;
+	height: 32px;
+	border: none;
+}
+.wrapper {
+	float: left;
+  border: 2px solid #000;
+  border-radius: 4px;
+  transition: 0.2s ease;
+}
+.wrapper:active {
+	float: left;
+  border: 2px solid #66C;
+  border-radius: 4px;
+  transition: 0.2s ease;
+}
+input[type=text] {
+  display:block;
+  border: 1px solid #BBB;
+  padding: 3px;
+  border-radius: 4px;
+  transition: 0.2s ease;
+}
+input[type=text]:focus {
+  outline: none;
+  border: 1px solid #88F;
+  transition: 0.2s ease;
+}
+
+select {
+  display:block;
+  border: 1px solid #BBB;
+  padding: 3px;
+  border-radius: 4px;
+  transition: 0.2s ease;
+}
+select:focus {
+  outline: none;
+  border: 1px solid #88F;
+  transition: 0.2s ease;
+}
+input[type=button] {
+  display:block;
+  border: 1px solid #BBB;
+  padding: 5px 8px;
+  border-radius: 4px;
+  transition: 0.2s ease;
+  background-color: #EEE;
+}
+input[type=button]:focus {
+  outline: none;
+  border: 1px solid #88F;
+  transition: 0.2s ease;
+  background-color: #F2F2F2;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="TriMill">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Big Text - TriMill</title>
+
+	<script src="main.js"></script>
+  <link rel="stylesheet" href="stylesheet.css">
+
+	<style>
+		body {
+			margin: 1em;
+			padding: 0;
+			overflow: hidden;
+			font-family: sans-serif;
+			align: center;
+		}
+	</style>
+</head>
+<body id="body">
+  <h1>Big Text</h1>
+  Enter text and select font, foreground, and background colors. Click "Show" to display your text
+  <br>
+  <input type="text" id="text"><br>
+  Font type:<br>
+  <select id="font">
+    <option value="serif">Serif</option>
+    <option value="sans-serif">Sans-Serif</option>
+    <option value="monospace">Monospace</option>
+  </select><br><br>
+  Foreground<br>
+  <label id="wrapper_foreground" class="wrapper">
+    <input id="foreground" type="color" value="#000000">
+  </label><br><br><br>
+  Backround<br>
+  <label id="wrapper_background" class="wrapper">
+    <input id="background" type="color" value="#FFFFFF">
+  </label><br><br><br>
+  <input type="button" id="show" value="Show" onclick="show();">
+</body>
+</html>
