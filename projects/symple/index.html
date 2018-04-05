@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Symple - TriMill</title>
+
+	<script src="../libraries/jquery-3.3.1.js"></script>
+	<script src="../libraries/jquery-linedtextarea.js"></script>
+  <script src="main.js"></script>
+  <script src="dom.js"></script>
+  <script src="examples.js"></script>
+
+	<link href="../libraries/jquery-linedtextarea.css" type="text/css" rel="stylesheet" />
+  <link href="stylesheet.css" type="text/css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Cousine|Open+Sans" rel="stylesheet" />
+
+</head>
+<body>
+  <h1>Symple</h1>
+  <p>Symple is a browser-based simulation of assembly for a simple imaginary computer.</p>
+  <span id="outerwrap">
+    <textarea class="lined" rows="30" cols="60" id="code"></textarea>
+  </span>
+  <div class="side">
+    <button type="button" onclick="runProgram();">Run Program</button>
+    <button type="button" onclick="halted = true;">Halt</button><br>
+    Load example project:
+    <select id="example" onchange="loadExample();">
+      <option selected disabled hidden value="none">Select...</option>
+      <option value="hello_world">Hello world</option>
+      <option value="echo">Echo</option>
+      <option value="fibonacci">Fibonacci</option>
+      <option value="ascii">ASCII characters</option>
+      <option value="powers_two">Powers of two</option>
+    </select><br>
+    Line Numbers:
+    <button type="button" id="bin" class="roundbutton"
+      onclick="lineNumberMode('bin');">bin</button>
+    <button type="button" id="oct" class="roundbutton"
+      onclick="lineNumberMode('oct');">oct</button>
+    <button type="button" id="dec" class="roundbutton"
+      onclick="lineNumberMode('dec');">dec</button>
+    <button type="button" id="hex" class="roundbutton active"
+      onclick="lineNumberMode('hex');">hex</button><br>
+    Output:<br>
+    <textarea rows="15" cols="30" id="output" readonly="true"></textarea><br>
+    <input type="text" id="input" /><br><br>
+    Delay: <input type="number" id="delay" value="150" />
+    <p>Symple uses <a href="https://jquery.com/">jQuery 3.1.1</a> and a
+      modified version of <a href="http://alan.blog-city.com/jquerylinedtextarea.htm">
+      Lined Textarea</a></p>
+  </div><br>
+  <script> $(function() {$(".lined").linedtextarea({});}); </script>
+</body>
+</html>
