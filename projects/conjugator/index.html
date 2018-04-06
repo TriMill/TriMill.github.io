@@ -37,18 +37,18 @@
 	</div>
 	<div id="basic-verb" class="content">
 	<!--Begin verb and type-->
-	<input type="text" id="verb" placeholder="Enter a Spanish verb..." onchange="verbChanged()"><br>
+	<input type="text" id="verb" placeholder="Enter a Spanish verb..." onchange="changeOccured()"><br>
 	Verb type: <br>
 	<label class="container">-ar
-		<input type="radio" id="verbtype-ar" name="verbtype" onchange="radioChanged()" checked>
+		<input type="radio" id="verbtype-ar" name="verbtype" onchange="changeOccured()" checked>
 		<span class="checkmark"></span>
 	</label>
 	<label class="container">-er
-		<input type="radio" id="verbtype-er" name="verbtype" onchange="radioChanged()">
+		<input type="radio" id="verbtype-er" name="verbtype" onchange="changeOccured()">
 		<span class="checkmark"></span>
 	</label>
 	<label class="container">-ir
-		<input type="radio" id="verbtype-ir" name="verbtype" onchange="radioChanged()">
+		<input type="radio" id="verbtype-ir" name="verbtype" onchange="changeOccured()">
 		<span class="checkmark"></span>
 	</label>
 	<!--End verb and type-->
@@ -56,32 +56,62 @@
 	<div id="stem-change" class="content">
 		Stem Change: <br>
 		<label class="container">None
-			<input type="radio" id="stemchange-none" name="stemchange" onchange="stemChanged()" checked>
+			<input type="radio" id="stemchange-none" name="stemchange" onchange="changeOccured()" checked>
 			<span class="checkmark"></span>
 		</label>
 		<label class="container">e -> ie
-			<input type="radio" id="stemchange-e.ie" name="stemchange" onchange="stemChanged()">
+			<input type="radio" id="stemchange-e.ie" name="stemchange" onchange="changeOccured()">
 			<span class="checkmark"></span>
 		</label>
 		<label class="container">o -> ue
-			<input type="radio" id="stemchange-o.ue" name="stemchange" onchange="stemChanged()">
+			<input type="radio" id="stemchange-o.ue" name="stemchange" onchange="changeOccured()">
 			<span class="checkmark"></span>
 		</label>
 		<label class="container">e -> i
-			<input type="radio" id="stemchange-e.i" name="stemchange" onchange="stemChanged()">
+			<input type="radio" id="stemchange-e.i" name="stemchange" onchange="changeOccured()">
 			<span class="checkmark"></span>
 		</label>
 		<label class="container">i -> ie
-			<input type="radio" id="stemchange-i.ie" name="stemchange" onchange="stemChanged()">
+			<input type="radio" id="stemchange-i.ie" name="stemchange" onchange="changeOccured()">
 			<span class="checkmark"></span>
 		</label>
 		<label class="container">u -> ue
-			<input type="radio" id="stemchange-u.ue" name="stemchange" onchange="stemChanged()">
+			<input type="radio" id="stemchange-u.ue" name="stemchange" onchange="changeOccured()">
 			<span class="checkmark"></span>
 		</label>
 	</div>
 	<div id="irregulatities" class="content">
-		This feature is not yet implemented
+		Remove stem change from "yo" form
+		<label class="container">No
+			<input type="radio" id="yochange-true" name="yochange" onchange="changeOccured()" checked>
+			<span class="checkmark"></span>
+		</label>
+		<label class="container">Yes
+			<input type="radio" id="yochange-false" name="yochange" onchange="changeOccured()">
+			<span class="checkmark"></span>
+		</label>
+		Add letters to "yo" form
+		<label class="container">None
+			<input type="radio" id="yoletter-none" name="yoletter" onchange="changeOccured()" checked>
+			<span class="checkmark"></span>
+		</label>
+		<label class="container">Add ‘g’ or ‘gi’ before ‘o’ (‘g’ verb/‘go’ verb)
+			<input type="radio" id="yoletter-g" name="yoletter" onchange="changeOccured()">
+			<span class="checkmark"></span>
+		</label>
+		<label class="container">Add ‘y’ after ‘o’
+			<input type="radio" id="yoletter-y" name="yoletter" onchange="changeOccured()">
+			<span class="checkmark"></span>
+		</label>
+		Remove accent from "vosotros" form (for single-syllable verbs)
+		<label class="container">No
+			<input type="radio" id="vosacc-false" name="vosacc" onchange="changeOccured()" checked>
+			<span class="checkmark"></span>
+		</label>
+		<label class="container">Yes
+			<input type="radio" id="vosacc-true" name="vosacc" onchange="changeOccured()">
+			<span class="checkmark"></span>
+		</label>
 	</div>
 	<div id="conjugations" class="content">
 		<table class="no-border">
