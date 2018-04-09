@@ -1,5 +1,5 @@
 let examples = {
-  hello_world: 'LDI 0x48\nCHR\nLDI 0x65\nCHR\nLDI 0x6C\nCHR\nLDI 0x6C\nCHR'+
+  hello_world: 'LDI 0x48\nCHR\nLDI 0x65\nCHR\nLDI 0x6C\nCHR\nCHR'+
     '\nLDI 0x6F\nCHR\nLDI 0x20\nCHR\nLDI 0x57\nCHR\nLDI 0x6F\nCHR\nLDI 0x72\nCHR'+
     '\nLDI 0x6C\nCHR\nLDI 0x64\nCHR\nLDI 0x21\nCHR\nHLT',
   echo: 'JMP 2\nCHR\nINP\nCMP 0x6\nJNE 1\nHLT\n0',
