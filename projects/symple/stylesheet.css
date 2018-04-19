@@ -1,109 +1,37 @@
-@import url('https://fonts.googleapis.com/css?family=Cousine|Open+Sans');
-
-* {
-  font-family: 'Open Sans', Helvetica, sans-serif;
-  font-size: 12pt;
-}
-
-body {
-  margin-left: 16px;
-}
-
-h1 {
-  font-size: 24pt;
-}
-
 .linedtextarea textarea, .linedwrap .codelines .lineno {
   font-size: 12pt;
   font-family: 'Cousine', 'Consolas', monospace
 }
-
 .linedwrap .codelines .lineno {
 	color:#999999;
 }
-
 .linedwrap .lines {
   border-right: 1px solid #AAAAAA;
 }
-
 .linedwrap {
   border: 1px solid #AAAAAA;
   border-radius: 5px;
   float: left;
 }
-
 .lined:focus {
   outline: none;
   border: none;
 }
-
-textarea:not(.linedtextarea) {
-  border-radius: 5px;
-  outline: none;
-  padding: 5px;
-}
-
-button {
-  background-color: #FFFFFF;
-  border: 1px solid #AAAAAA;
-  border-radius: 5px;
-  padding-left: 8px;
-  padding-right: 8px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  outline: none;
-  transition: 0.2s ease;
-  margin-top: 3px;
-  margin-bottom: 3px;
-}
-
-button:active {
-  background-color: #DDDDDD;
-}
-
-button:hover {
-  background-color: #EEEEEE;
-  transition: 0.2s ease;
-}
-
 .roundbutton {
   border-radius: 100px;
 }
-
 .roundbutton.active {
   background-color: #DDDDDD;
 }
-
 .side {
   padding-left: 10px;
   float: left;
 }
-
-input[type="text"], input[type="number"] {
-  border: 1px solid #AAAAAA;
-  border-radius: 5px;
-  outline: none;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-}
-
-input[type="number"] {
-  width: 80px;
-}
-
-select {
-  border: 1px solid #AAAAAA;
-  border-radius: 5px;
-  outline: none;
-  padding-left: 2px;
-  padding-right: 2px;
-  padding-top: 1px;
-  padding-bottom: 1px;
-}
-
 div.lineno.lineselect {
   color: #FF0000 !important;
   font-weight: bold !important;
+}
+.hidezero {
+  color: #D8CC11;
+  display: none;
 }
