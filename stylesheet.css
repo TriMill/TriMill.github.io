@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css?family=Cousine|Open+Sans');
+
+* {
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  font-size: 12pt;
+}
+h1 {
+  font-size: 22pt;
+}
+body {
+  margin: 1em;
+  padding: 0;
+}
+select, input[type="text"], input[type="button"], input[type="number"], button, textarea {
+  border: 1px solid #AAA;
+  border-radius: 5px;
+  font-size: 14pt;
+  outline: none;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+input[type="text"], input[type="number"]{
+  width: 15ch;
+}
+input[type="button"], button {
+  background-color: #FFF;
+  transition: 0.2s ease;
+  font-size: 15pt;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+input[type="button"]:active, button:active {
+  background-color: #DDDDDD;
+}
+
+input[type="button"]:hover, button:hover {
+  background-color: #EEEEEE;
+  transition: 0.2s ease;
+}
+.container {
+  display: block;
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+.container input[type=radio] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  background-color: #EEE;
+  border: 1px solid #AAA;
+  border-radius: 50%;
+}
+input:disabled ~ .checkmark {
+  background-color: #AAA;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+.container .checkmark:after {
+ 	top: 3px;
+	left: 3px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #999;
+}
+.no-border {
+  border-style: hidden;
+}
+.right {
+  text-align: right;
+  border-style: hidden;
+}
+.left {
+  text-align: left;
+  border-style: hidden;
+}
+a {
+  transition: 0.2s ease;
+}
+a:link {
+  color: #00E;
+}
+a:visited {
+  color: #63B;
+}
+a:hover {
+  color: #88F;
+}
+a:active {
+  color: #00A;
+}
+table {
+  border-collapse: collapse;
+  background-color: #FFF;
+}
+td, th {
+  border: 1px solid #AAA;
+  padding: 8px;
+  vertical-align: top;
+}
+th {
+  padding: 10px;
+  text-align: center;
+  background-color: #FFF;
+}

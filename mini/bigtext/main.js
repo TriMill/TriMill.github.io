@@ -21,11 +21,16 @@ function show() {
   div.innerHTML = text;
   body.appendChild(div);
 
+  var sheet = document.getElementById('main');
+  sheet.disabled = true;
+  sheet.parentNode.removeChild(sheet);
+
   body.style.fontFamily = font;
-  body.style.paddingTop = '100px';
-  body.style.fontSize = '200px';
+  body.style.paddingTop = '8vw';
+  body.style.fontSize = '22vw';
   body.style.alignContent = 'center';
   body.style.textAlign = 'center';
   body.style.color = foreground;
   body.style.backgroundColor = background;
+  body.style.lineHeight = 0;
 }
