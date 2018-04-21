@@ -23,10 +23,11 @@ function measureUpdate() {
   let select = length.select;
   switch($('#measure').val()) {
     case 'length': units = length.units; select = length.select; break;
-    case 'temp':   units = temp.units;   select = temp.select; break;
-    case 'mass':   units = mass.units;   select = mass.select;  break;
-    case 'area':   units = area.units;   select = area.select;  break;
-    case 'time':   units = time.units;   select = time.select;  break;
+    case 'temp':   units = temp.units;   select = temp.select;   break;
+    case 'mass':   units = mass.units;   select = mass.select;   break;
+    case 'area':   units = area.units;   select = area.select;   break;
+    case 'time':   units = time.units;   select = time.select;   break;
+    case 'volume': units = volume.units; select = volume.select; break;
   }
   updateUnits(units, select);
   recalc();
@@ -57,6 +58,8 @@ function recalc() {
     case 'mass': m = mass; break;
     case 'area': m = area; break;
     case 'time': m = time; break;
+    case 'volume': m = volume; break;
+
   }
   let value = $('#val1').val();
   let result = 0;

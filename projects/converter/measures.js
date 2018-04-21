@@ -14,7 +14,7 @@ let length = {
     1609.344, 1852, 4828.032, 149597870700, 9460730472580800],
   custom: [['Foot', 'Inch', 12], ['Yard', 'Foot', 3], ['Mile', 'Foot', 5280],
   ['Inch', 'Centimeter', 2.54], ['Mile', 'Kilometer', 1.609344]]
-}
+};
 
 let temp = {
   units: ['Celcius', 'Fahrenheit', 'Kelvin', 'Rankine', 'Delisle'],
@@ -29,25 +29,25 @@ let temp = {
     'Kelvin:': (n)=>{return n - 273.15;},
     ':Kelvin': (n)=>{return n + 273.15;},
     'Rankine:': (n)=>{return (n-491.67)*(5/9);},
-    ':Rankine': (n)=>{return (n+273.15)*(9/5);},
+    ':Rankine': (n)=>{return (n*9/5)+491.67;},
     'Delisle:': (n)=>{return 100-(n*2/3);},
     ':Delisle': (n)=>{return (100-n)*3/2;},
   },
   custom: []
-}
+};
 
 let mass = {
   units: ['Picogram', 'Nanogram', 'Microgram', 'Milligram', 'Centigram', 'Decigram',
-    'Gram', 'Decagram', 'Hectogram', 'Kilogram', 'Tonne', 'Pound', 'Slug', 'Stone',
-    'US Ton', 'Solar Mass', 'Earth Mass'],
+    'Gram', 'Decagram', 'Hectogram', 'Kilogram', 'Metric Tonne', 'Ounce', 'Pound',
+    'Slug', 'Stone', 'US Ton', 'Solar Mass', 'Earth Mass'],
   common: 'Kilogram',
   ctype: 'mul',
   select: ['Kilogram', 'Pound'],
   conversions: [1e-15, 1e-12, 1e-9, 1e-6, 1e-5, 1e-4,
-    0.001, 0.01, 0.1, 1, 1000, 0.45359237, 14.593903, 6.35029318,
-    907.18474, 1.98855e+30, 5.9722e+24],
-  custom: [['US Ton', 'Pound', 2000]]
-}
+    0.001, 0.01, 0.1, 1, 1000, 0.028349523125, 0.45359237,
+    14.593903, 6.35029318, 907.18474, 1.98855e+30, 5.9722e+24],
+  custom: [['US Ton', 'Pound', 2000], ['Pound', 'Ounce', 16]]
+};
 
 let area = {
   units: ['Square Millimeter', 'Square Centimeter', 'Square Meter', 'Hectare',
@@ -59,7 +59,7 @@ let area = {
   conversions: [1e-12, 1e-10, 1e-6, 0.01, 1, 6.4516e-10, 9.290304e-8, 8.3612736e-7,
     2.589988110336, 0.0040468564224],
   custom: []
-}
+};
 
 let time = {
   units: ['Microsecond', 'Millisecond', 'Second', 'Minute', 'Hour', 'Day', 'Week',
@@ -74,4 +74,19 @@ let time = {
     365, 365.25, 365.2425, 365.256363004, 366, 3652.425,
     25749.59625, 36524.25, 365242.5],
   custom: []
-}
+};
+
+let volume = {
+  units: ['Microliter', 'Milliliter', 'Centiliter', 'Deciliter', 'Liter',
+    'Decaliter', 'Hectoliter', 'Kiloliter', 'Minim', 'Fluid Dram', 'Teaspoon',
+    'Tablespoon', 'Fluid Ounce', 'Shot', 'Cup', 'Pint', 'Quart', 'Gallon',
+    'Barrel', 'Hogshead'],
+  common: 'Milliliter',
+  ctype: 'mul',
+  select: ['Liter', 'Cup'],
+  conversions: [0.001, 1, 10, 100, 1000,
+    10000, 100000, 1000000, 0.061611519921875, 	3.6966911953125, 4.92892159375,
+    14.78676478125, 29.5735295625, 44.36029434375, 236.5882365, 473.176473, 946.352946, 3785.411784,
+    119240.471196, 238480.942392],
+  custom: []
+};
