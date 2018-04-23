@@ -1,36 +1,50 @@
-window.onload = function() {
-  let foreground = document.getElementById('foreground');
-  let foregroundWrapper = document.getElementById('wrapper_foreground');
-  foreground.onchange = function() { foregroundWrapper.style.backgroundColor = foreground.value; }
-  foregroundWrapper.style.backgroundColor = foreground.value;
+$(function() {
+  let text = param('text'), fg = param('fg'), bg = param('bg'), font = param('font');
+  console.log(text, fg, bg, font);
+  if(text && fg && bg && font) {
+    display(text, '#'+fg, '#'+bg, font);
+    return;
+  }
+  let foreground = $('#foreground');
+  let foregroundWrapper = $('#wrapper_foreground');
+  foreground.change(function() { foregroundWrapper.css('background-color', foreground.val());})
+  foregroundWrapper.css('background-color', foreground.val());
 
-  let background = document.getElementById('background');
-  let backgroundWrapper = document.getElementById('wrapper_background');
-  background.onchange = function() { backgroundWrapper.style.backgroundColor = background.value; }
-  backgroundWrapper.style.backgroundColor = background.value;
-}
+  let background = $('#background');
+  let backgroundWrapper = $('#wrapper_background');
+  background.change(function() { backgroundWrapper.css('background-color', background.val());})
+  backgroundWrapper.css('background-color', background.val());
+});
 
 function show() {
-  text = document.getElementById('text').value;
-  foreground = document.getElementById('foreground').value;
-  background = document.getElementById('background').value;
-  font = document.getElementById('font').value;
-  let body = document.getElementById('body');
-  body.innerHTML = '';
-  let div = document.createElement('div');
-  div.innerHTML = text;
-  body.appendChild(div);
+  let text = $('#text').val();
+  let fg = $('#foreground').val().substring(1);
+  let bg = $('#background').val().substring(1);
+  let font = $('#font').val();
+  window.location.href = window.location.href.split('?')[0] +
+    '?text='+(text==''?'%00':text)+'&fg='+fg+'&bg='+bg+'&font='+font;
+}
 
-  var sheet = document.getElementById('main');
-  sheet.disabled = true;
-  sheet.parentNode.removeChild(sheet);
+function display(text, fg, bg, font) {
+  let body = $('#body');
+  body.html('');
+  let div = $('<div></div>');
+  div.html(text);
+  body.append(div);
+  $('#main').remove();
+  $('#style').remove();
+  body.css('font-family', font);
+  body.css('color', fg);
+  body.css('background-color', bg);
+  body.css('line-height', 0);
+  $('head').append('<link rel="stylesheet" type="text/css" href="show.css">');
+}
 
-  body.style.fontFamily = font;
-  body.style.paddingTop = '8vw';
-  body.style.fontSize = '22vw';
-  body.style.alignContent = 'center';
-  body.style.textAlign = 'center';
-  body.style.color = foreground;
-  body.style.backgroundColor = background;
-  body.style.lineHeight = 0;
+function param(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"), results = regex.exec(url);
+  if (!results) return undefined;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
