@@ -15,17 +15,31 @@
 	<style>
 	</style>
 </head>
-<body id="body">
+<body>
+  <script src="testfont.js"></script>
   <h1>Big Text</h1>
   Enter text and select font, foreground, and background colors. Click "Show" to display your text
   <br>
-  <input type="text" id="text"><br>
-  Font type:<br>
-  <select id="font">
-    <option value="serif">Serif</option>
-    <option value="sans-serif">Sans-Serif</option>
-    <option value="monospace">Monospace</option>
-  </select><br><br>
+  <input type="text" id="text"><br><br>
+  Font:<br>
+  <label class="container">Font category&nbsp;
+		<input type="radio" name="ftype" value="sys" checked>
+		<span class="checkmark"></span>
+    <select id="font">
+      <option value="serif">Serif</option>
+      <option value="sans-serif">Sans-Serif</option>
+      <option value="monospace">Monospace</option>
+      <option value="cursive">Cursive</option>
+      <option value="fantasy">Fantasy</option>
+    </select><br>
+	</label>
+  <label class="container">Other font&nbsp;
+    <input type="radio" name="ftype" value="ggl">
+    <span class="checkmark"></span>
+    <input type="text" id="gfont" value="">&nbsp;
+    Accepts system fonts and Google fonts<br><br>
+	</label>
+
   Foreground<br>
   <label id="wrapper_foreground" class="wrapper">
     <input id="foreground" type="color" value="#000000">
