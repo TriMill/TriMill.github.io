@@ -11,7 +11,7 @@ $(function() {
 
 function addFontsToDropdown() {
   let fonts = ['Arial', 'Helvetica', 'Verdana', 'Segoe UI', 'Trebuchet MS', 'Impact',
-    'Times New Roman', 'Times', 'Georgia', 'Courier', 'Consolas', 'Fixedsys Excelsior 3.01', 'FakeFont'];
+    'Times New Roman', 'Times', 'Georgia', 'Courier', 'Consolas', 'Fixedsys Excelsior 3.01'];
   for(let i = 0; i < fonts.length; i++) {
     if(isFontAvailable(fonts[i])) {
       $('#font').append($('<option value="'+fonts[i]+'">'+fonts[i]+'</option>'));
