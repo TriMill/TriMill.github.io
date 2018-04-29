@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Diretion - TriMill</title>
+	<title>Symple - TriMill</title>
 
 	<script src="../libraries/jquery-3.3.1.js"></script>
 	<script src="../libraries/jquery-linedtextarea.js"></script>
@@ -11,15 +11,15 @@
 
 	<link href="../libraries/jquery-linedtextarea.css" type="text/css" rel="stylesheet" />
   <link href="../../stylesheet.css" type="text/css" rel="stylesheet" />
-  <link href="stylesheet.css" type="text/css" rel="stylesheet" />
+  <link href="../libraries/stylesheet.css" type="text/css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Cousine|Open+Sans" rel="stylesheet" />
 
 </head>
 <body>
-  <h1>Diretion</h1>
-  <p>Diretion is a 2D esoteric programming language.</p>
+  <h1>Symple</h1>
+  <p>Symple is a browser-based simulation of assembly for a simple imaginary computer.</p>
   <span id="outerwrap">
-    <textarea class="lined" rows="30" cols="70" id="code"></textarea>
+    <textarea class="lined" rows="30" cols="60" id="code"></textarea>
   </span>
   <div class="side">
     <button type="button" onclick="runProgram();">Run Program</button>
@@ -27,9 +27,11 @@
     Load example project:
     <select id="example" onchange="loadExample();">
       <option selected disabled hidden value="none">Select...</option>
+      <option value="hello_world">Hello world</option>
       <option value="echo">Echo</option>
       <option value="fibonacci">Fibonacci</option>
-      <option value="hello_world">Hello World</option>
+      <option value="ascii">ASCII characters</option>
+      <option value="powers_two">Powers of two</option>
     </select><br>
     Line Numbers:
     <button type="button" id="bin" class="roundbutton"
@@ -43,9 +45,8 @@
     Output:<br>
     <textarea rows="15" cols="30" id="output" readonly="true"></textarea><br>
     <input type="text" id="input" /><br><br>
-    Delay: <input type="number" id="delay" value="150" onchange="checkZero();" />&nbsp;
-    <span class="hidezero">A delay of zero could crash the browser. Test with a higher delay first.</span>
-    <p>Diretion uses <a href="https://jquery.com/">jQuery 3.1.1</a> and a
+    Delay: <input type="number" id="delay" value="150" />
+    <p>Symple uses <a href="https://jquery.com/">jQuery 3.1.1</a> and a
       modified version of <a href="http://alan.blog-city.com/jquerylinedtextarea.htm">
       Lined Textarea</a></p>
   </div><br>
