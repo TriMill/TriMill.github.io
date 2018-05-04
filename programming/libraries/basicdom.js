@@ -1,7 +1,3 @@
-$(window).bind('beforeunload', function(){
-   return 'Are you sure you want to leave?\nSymple does not save your code yet.';
-});
-
 function loadExample() {
   value = $("#example option:selected").val();
   $('#code').val(examples[value]);
@@ -26,7 +22,7 @@ function lineNumberMode(mode) {
 }
 
 function output(num, asChar) {
-  let str = asChar ? String.fromCharCode(num) : num;
+  let str = asChar ? String.fromCharCode(num) : (num + ' ');
   $('#output').val($('#output').val() + str);
 }
 
@@ -45,10 +41,31 @@ function getDelay() {
   return $('#delay').val();
 }
 
-function popInput() {
+function popInput(asChar) {
   let inp = $('#input').val();
   if(inp == null || inp.length <= 0) return 0;
-  let c = inp.charCodeAt(0);
-  $('#input').val(inp.substring(1, inp.length));
-  return c;
+  if(asChar) {
+    let c = inp.charCodeAt(0);
+    $('#input').val(inp.substring(1, inp.length));
+    return c;
+  } else {
+    let num = '';
+    let char = inp[0];
+    while(char != ' ' && char != undefined) {
+      num += char;
+      inp = inp.substring(1, inp.length);
+      char = inp[0];
+    }
+    inp = inp.substring(1, inp.length);
+    $('#input').val(inp);
+    return parseInt(num);
+  }
+}
+
+function checkZero() {
+  if(isDelayZero()) {
+    $('.hidezero').css('display', 'unset');
+  } else {
+    $('.hidezero').css('display', 'none');
+  }
 }
