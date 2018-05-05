@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Maze maker - TriMill</title>
+
+	<script src="../libraries/p5.js"></script>
+  <script src="../libraries/jquery-3.3.1.js"></script>
+  <script src="main.js"></script>
+
+  <link href="../../stylesheet.css" type="text/css" rel="stylesheet" />
+
+  <style>
+    .side { padding-left: 20px; float: left; }
+    input[type="button"] { font-size: 14pt; }
+  </style>
+
+</head>
+<body>
+  <div id="canvas-wrapper" style="float: left;"></div>
+  <div class="side">
+    <h1>Maze maker</h1>
+    Maze width (pixels): <input type="number" id="maze-width" value="720"><br>
+    Number of cells per row: <input type="number" id="num-cells" value="18"><br>
+    <input type="button" id="new-maze" value="New Maze" onclick="newMaze();"><br>
+    Speed (fps): <input type="number" id="speed" value="30"><br>
+    <input type="button" id="set-speed" value="Set Speed"
+      onclick="frameRate(int(document.getElementById('speed').value));"><br>
+    Data URL: <input type="text" readonly id="data-url" value="Wait...">
+    <input type="button" onclick="copyURL()" value="Copy">
+  </div>
+</body>
+</html>
