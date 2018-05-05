@@ -20,6 +20,8 @@ select, input[type="text"], input[type="button"], input[type="number"], button, 
   padding-right: 2px;
   padding-top: 1px;
   padding-bottom: 1px;
+  margin-top: 1px;
+  margin-bottom: 1px;
 }
 input[type="text"], input[type="number"]{
   width: 15ch;
