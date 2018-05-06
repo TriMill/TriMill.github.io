@@ -10,8 +10,8 @@
   <link href="../../stylesheet.css" type="text/css" rel="stylesheet" />
 
   <style>
+    * { font-size: 13pt; }
     .side { padding-left: 20px; float: left; }
-    input[type="button"] { font-size: 14pt; }
   </style>
 
 </head>
@@ -21,12 +21,24 @@
     <h1>Maze maker</h1>
     Maze width (pixels): <input type="number" id="maze-width" value="720"><br>
     Number of cells per row: <input type="number" id="num-cells" value="18"><br>
-    <input type="button" id="new-maze" value="New Maze" onclick="newMaze();"><br>
-    Speed (fps): <input type="number" id="speed" value="30"><br>
+    <input type="button" id="new-maze" value="New Maze" onclick="newMaze();"><br><br>
+
+    Foreground color: <select id="selectfg" onchange="updateFG()"></select>
+    <input type="text" id="colorfg" value="0, 0, 0"
+      onchange="colorfg = color(elem('colorfg').value.split(', ')); redraw();"><br>
+    Background color: <select id="selectbg" onchange="updateBG()"></select>
+    <input type="text" id="colorbg" value="255, 255, 255"
+      onchange="colorbg = color(elem('colorbg').value.split(', ')); redraw();"><br>
+    Border weight: <input type="number" id="bwait" value="2"
+      onchange="borderWeight = elem('bwait').value; redraw();"><br><br>
+
+    Speed (fps): <input type="number" id="speed" value="30">
     <input type="button" id="set-speed" value="Set Speed"
-      onclick="frameRate(int(document.getElementById('speed').value));"><br>
-    Data URL: <input type="text" readonly id="data-url" value="Wait...">
-    <input type="button" onclick="copyURL()" value="Copy">
+      onclick="frameRate(int(elem('speed').value));"><br>
+    Show colored overlay: <input type="checkbox" id="overlay" checked
+      onclick="showOverlay = elem('overlay').checked;"><br><br>
+
+    <div id="status">Generating...</div>
   </div>
 </body>
 </html>

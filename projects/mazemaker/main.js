@@ -1,23 +1,33 @@
 p5.disableFriendlyErrors = true;
 
-var canvas;
 var canvasSize = 720; //2^4 * 3^2 * 5
 var numCells = 18;
-var cells; // 3d array, cells[x][y] = [top wall, right wall, bottom wall, left wall, available]
+var colorfg, colorbg, borderWeight;
+var showOverlay = true;
+
+var canvas;
+ // 3d array, cells[x][y] = [top wall, right wall, bottom wall, left wall, available, in stack]
+var cells;
 var stack;
 var cx, cy;
 var done;
+
+function elem(id) {return document.getElementById(id);}
 
 function setup() {
   canvas = createCanvas(canvasSize+0.5, canvasSize+0.5);
   canvas.parent('canvas-wrapper');
   canvas.id('maze-canvas');
+  setupSelects();
+  colorfg = color(0);
+  colorbg = color(255);
+  borderWeight = 2;
   resetMaze();
   frameRate(30);
 }
 
 function resetMaze() {
-  background(255);
+  background(colorbg);
   cells = []; stack = []; done = false;
   for(var x = 0; x < numCells; x++) {
     cells.push([]);
@@ -28,30 +38,43 @@ function resetMaze() {
   cx = floor(random(numCells));
   cy = floor(random(numCells));
   cells[cx][cy][4] = false;
+  elem('status').innerHTML = 'Generating...';
 }
 
 
 function draw() {
-  background(255);
+  background(colorbg);
   drawCells();
   chooseNextCell();
 }
 
 function drawCells() {
-  stroke(0);
-  strokeWeight(2);
+  stroke(colorfg);
+  strokeWeight(borderWeight);
   var cw = canvasSize/numCells;
   var x, y, c
+  // Show overlay
+  if(!done && showOverlay) {
+    noStroke();
+    for(x = 0; x < numCells; x++) {
+      for(y = 0; y < numCells; y++) {
+        c = cells[x][y];
+        // Fill with blue if visited & on stack
+        if(!c[4] && c[5])
+          {fill( 99,  99, 255); rect(x*cw, y*cw, cw, cw);}
+        // Fill with light blue if visited but not on stack
+        if(!c[4] && !c[5])
+          {fill(150, 180, 255); rect(x*cw, y*cw, cw, cw);}
+        // Fill with green if current cell
+        if(cx == x && cy == y)
+          {fill(  0, 230,  50); rect(x*cw, y*cw, cw, cw);}
+      }
+    }
+    stroke(colorfg);
+  }
   for(x = 0; x < numCells; x++) {
     for(y = 0; y < numCells; y++) {
       c = cells[x][y];
-      // Fill with blue if visited & on stack
-      if(!c[4] && c[5] && !done) {noStroke(); fill(99, 99, 255); rect(x*cw, y*cw, cw, cw); stroke(0);}
-      // Fill with light blue if visited but not on stack
-      if(!c[4] && !c[5] && !done) {noStroke(); fill(150, 180, 255); rect(x*cw, y*cw, cw, cw); stroke(0);}
-      // Fill with green if current cell
-      if(cx == x && cy == y && !done) {noStroke(); fill(0, 230, 50); rect(x*cw, y*cw, cw, cw); stroke(0);}
-      // Draw edges
       if(c[0]) line(x*cw, y*cw, x*cw+cw, y*cw);
       if(c[1]) line(x*cw+cw, y*cw, x*cw+cw, y*cw+cw);
       if(c[2]) line(x*cw, y*cw+cw, x*cw+cw, y*cw+cw);
@@ -96,28 +119,64 @@ function chooseNextCell() {
   } else {
     // If stack is empty, we're done
     done = true;
-    setTimeout(addDataURL, 10);
+    elem('status').innerHTML = 'Done!';
   }
 }
 
 function newMaze() {
-  done = false;
-  canvasSize = document.getElementById('maze-width').value;
+  canvasSize = elem('maze-width').value;
   resizeCanvas(canvasSize, canvasSize);
-  numCells = document.getElementById('num-cells').value;
-  frameRate(int(document.getElementById('speed').value));
+  numCells = elem('num-cells').value;
+  frameRate(int(elem('speed').value));
   resetMaze();
   loop();
 }
 
-function addDataURL() {
-  var elem = document.getElementById('data-url');
-  elem.value = document.getElementById('maze-canvas').toDataURL();
+function updateFG() {
+  var select = elem('selectfg');
+  elem('colorfg').value = select.options[select.selectedIndex].value;
+  var evt = new Event('change');
+  elem('colorfg').dispatchEvent(evt)
 }
 
-function copyURL() {
-  var elem = document.getElementById('data-url');
-  elem.select();
-  document.execCommand('Copy');
-  alert('Copied to clipboard');
+function updateBG() {
+  var select = elem('selectbg');
+  elem('colorbg').value = select.options[select.selectedIndex].value;
+  var evt = new Event('change');
+  elem('colorbg').dispatchEvent(evt)
+}
+
+var options = [
+  ['Black',  '0, 0, 0'],
+  ['White',  '255, 255, 255'],
+  ['Light Gray', '200, 200, 208'],
+  ['Gray',   '150, 150, 158'],
+  ['Dark Gray', '100, 100, 108'],
+  ['Pink',   '240, 100, 200'],
+  ['Red',    '200, 20, 10'],
+  ['Orange', '250, 100, 10'],
+  ['Yellow', '250, 255, 30'],
+  ['Light Green', '140, 255, 90'],
+  ['Green',  '0, 180, 10'],
+  ['Cyan',   '30, 240, 250'],
+  ['Light Blue', '140, 160, 255'],
+  ['Blue',   '20, 20, 240'],
+  ['Purple', '100, 10, 130'],
+  ['Brown', '90, 45, 20'],
+]
+function setupSelects() {
+  var sfg = elem('selectfg');
+  var sbg = elem('selectbg');
+  for(var i = 0; i < options.length; i++) {
+    var option = document.createElement('option');
+    option.text = options[i][0];
+    option.value = options[i][1];
+    sfg.add(option);
+    option = document.createElement('option');
+    option.text = options[i][0];
+    option.value = options[i][1];
+    sbg.add(option);
+  }
+  sfg.options[0].selected = 'selected';
+  sbg.options[1].selected = 'selected';
 }
