@@ -4,6 +4,7 @@ var canvasSize = 720; //2^4 * 3^2 * 5
 var numCells = 18;
 var colorfg, colorbg, borderWeight;
 var showOverlay = true;
+var showCurrent = true;
 
 var canvas;
  // 3d array, cells[x][y] = [top wall, right wall, bottom wall, left wall, available, in stack]
@@ -11,8 +12,7 @@ var cells;
 var stack;
 var cx, cy;
 var done;
-
-function elem(id) {return document.getElementById(id);}
+var bias = 0;
 
 function setup() {
   canvas = createCanvas(canvasSize+0.5, canvasSize+0.5);
@@ -65,10 +65,21 @@ function drawCells() {
         // Fill with light blue if visited but not on stack
         if(!c[4] && !c[5])
           {fill(150, 180, 255); rect(x*cw, y*cw, cw, cw);}
+      }
+    }
+    stroke(colorfg);
+  }
+  if(!done && showCurrent) {
+    noStroke();
+    var d = false;
+    var x, y;
+    for(x = 0; x < numCells; x++) {
+      for(y = 0; y < numCells; y++) {
         // Fill with green if current cell
         if(cx == x && cy == y)
-          {fill(  0, 230,  50); rect(x*cw, y*cw, cw, cw);}
+          {fill(0, 230,  50); rect(x*cw, y*cw, cw, cw); d=true; break; }
       }
+      if(d) break;
     }
     stroke(colorfg);
   }
@@ -87,14 +98,22 @@ function drawCells() {
 function chooseNextCell() {
   var choices = [];
   // Check left, right, up, and down
-  if(cells[cx-1] && cells[cx-1][cy] && cells[cx-1][cy][4])
+  if(cells[cx-1] && cells[cx-1][cy] && cells[cx-1][cy][4]) {
     choices.push([cx-1, cy, 3]);
-  if(cells[cx+1] && cells[cx+1][cy] && cells[cx+1][cy][4])
+    if(bias > 0) {choices.push([cx-1, cy, 3]); choices.push([cx-1, cy, 3]);}
+  }
+  if(cells[cx+1] && cells[cx+1][cy] && cells[cx+1][cy][4]) {
     choices.push([cx+1, cy, 1]);
-  if(cells[cx]   && cells[cx][cy-1] && cells[cx][cy-1][4])
+    if(bias > 0) {choices.push([cx+1, cy, 1]); choices.push([cx+1, cy, 1]);}
+  }
+  if(cells[cx]   && cells[cx][cy-1] && cells[cx][cy-1][4]) {
     choices.push([cx, cy-1, 0]);
-  if(cells[cx]   && cells[cx][cy+1] && cells[cx][cy+1][4])
+    if(bias < 0) {choices.push([cx, cy-1, 0]); choices.push([cx, cy-1, 0]);}
+  }
+  if(cells[cx]   && cells[cx][cy+1] && cells[cx][cy+1][4]) {
     choices.push([cx, cy+1, 2]);
+    if(bias < 0) {choices.push([cx, cy+1, 2]); choices.push([cx, cy+1, 2]);}
+  }
   if(choices.length > 0){
     // Push current cell to stack
     stack.push([cx, cy]);
@@ -121,62 +140,4 @@ function chooseNextCell() {
     done = true;
     elem('status').innerHTML = 'Done!';
   }
-}
-
-function newMaze() {
-  canvasSize = elem('maze-width').value;
-  resizeCanvas(canvasSize, canvasSize);
-  numCells = elem('num-cells').value;
-  frameRate(int(elem('speed').value));
-  resetMaze();
-  loop();
-}
-
-function updateFG() {
-  var select = elem('selectfg');
-  elem('colorfg').value = select.options[select.selectedIndex].value;
-  var evt = new Event('change');
-  elem('colorfg').dispatchEvent(evt)
-}
-
-function updateBG() {
-  var select = elem('selectbg');
-  elem('colorbg').value = select.options[select.selectedIndex].value;
-  var evt = new Event('change');
-  elem('colorbg').dispatchEvent(evt)
-}
-
-var options = [
-  ['Black',  '0, 0, 0'],
-  ['White',  '255, 255, 255'],
-  ['Light Gray', '200, 200, 208'],
-  ['Gray',   '150, 150, 158'],
-  ['Dark Gray', '100, 100, 108'],
-  ['Pink',   '240, 100, 200'],
-  ['Red',    '200, 20, 10'],
-  ['Orange', '250, 100, 10'],
-  ['Yellow', '250, 255, 30'],
-  ['Light Green', '140, 255, 90'],
-  ['Green',  '0, 180, 10'],
-  ['Cyan',   '30, 240, 250'],
-  ['Light Blue', '140, 160, 255'],
-  ['Blue',   '20, 20, 240'],
-  ['Purple', '100, 10, 130'],
-  ['Brown', '90, 45, 20'],
-]
-function setupSelects() {
-  var sfg = elem('selectfg');
-  var sbg = elem('selectbg');
-  for(var i = 0; i < options.length; i++) {
-    var option = document.createElement('option');
-    option.text = options[i][0];
-    option.value = options[i][1];
-    sfg.add(option);
-    option = document.createElement('option');
-    option.text = options[i][0];
-    option.value = options[i][1];
-    sbg.add(option);
-  }
-  sfg.options[0].selected = 'selected';
-  sbg.options[1].selected = 'selected';
 }
