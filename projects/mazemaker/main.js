@@ -1,7 +1,8 @@
 p5.disableFriendlyErrors = true;
 
-var canvasSize = 720; //2^4 * 3^2 * 5
-var numCells = 18;
+var canvasWidth = 720;
+var canvasHeight = 720;
+var mazeWidth = 18, mazeHeight = 18;
 var colorfg, colorbg, borderWeight;
 var showOverlay = true;
 var showCurrent = true;
@@ -15,7 +16,7 @@ var done;
 var bias = 0;
 
 function setup() {
-  canvas = createCanvas(canvasSize+0.5, canvasSize+0.5);
+  canvas = createCanvas(canvasWidth+0.5, canvasHeight+0.5);
   canvas.parent('canvas-wrapper');
   canvas.id('maze-canvas');
   setupSelects();
@@ -29,14 +30,14 @@ function setup() {
 function resetMaze() {
   background(colorbg);
   cells = []; stack = []; done = false;
-  for(var x = 0; x < numCells; x++) {
+  for(var x = 0; x < mazeWidth; x++) {
     cells.push([]);
-    for(var y = 0; y < numCells; y++) {
+    for(var y = 0; y < mazeHeight; y++) {
       cells[x][y] = [true, true, true, true, true, false];
     }
   }
-  cx = floor(random(numCells));
-  cy = floor(random(numCells));
+  cx = floor(random(mazeWidth));
+  cy = floor(random(mazeHeight));
   cells[cx][cy][4] = false;
   elem('status').innerHTML = 'Generating...';
 }
@@ -51,20 +52,21 @@ function draw() {
 function drawCells() {
   stroke(colorfg);
   strokeWeight(borderWeight);
-  var cw = canvasSize/numCells;
+  var cw = canvasWidth/mazeWidth;
+  var ch = canvasHeight/mazeHeight;
   var x, y, c
   // Show overlay
   if(!done && showOverlay) {
     noStroke();
-    for(x = 0; x < numCells; x++) {
-      for(y = 0; y < numCells; y++) {
+    for(x = 0; x < mazeWidth; x++) {
+      for(y = 0; y < mazeHeight; y++) {
         c = cells[x][y];
         // Fill with blue if visited & on stack
         if(!c[4] && c[5])
-          {fill( 99,  99, 255); rect(x*cw, y*cw, cw, cw);}
+          {fill( 99,  99, 255); rect(x*cw, y*ch, cw, ch);}
         // Fill with light blue if visited but not on stack
         if(!c[4] && !c[5])
-          {fill(150, 180, 255); rect(x*cw, y*cw, cw, cw);}
+          {fill(150, 180, 255); rect(x*cw, y*ch, cw, ch);}
       }
     }
     stroke(colorfg);
@@ -73,23 +75,23 @@ function drawCells() {
     noStroke();
     var d = false;
     var x, y;
-    for(x = 0; x < numCells; x++) {
-      for(y = 0; y < numCells; y++) {
+    for(x = 0; x < mazeWidth; x++) {
+      for(y = 0; y < mazeHeight; y++) {
         // Fill with green if current cell
         if(cx == x && cy == y)
-          {fill(0, 230,  50); rect(x*cw, y*cw, cw, cw); d=true; break; }
+          {fill(0, 230,  50); rect(x*cw, y*ch, cw, ch); d=true; break; }
       }
       if(d) break;
     }
     stroke(colorfg);
   }
-  for(x = 0; x < numCells; x++) {
-    for(y = 0; y < numCells; y++) {
+  for(x = 0; x < mazeWidth; x++) {
+    for(y = 0; y < mazeHeight; y++) {
       c = cells[x][y];
-      if(c[0]) line(x*cw, y*cw, x*cw+cw, y*cw);
-      if(c[1]) line(x*cw+cw, y*cw, x*cw+cw, y*cw+cw);
-      if(c[2]) line(x*cw, y*cw+cw, x*cw+cw, y*cw+cw);
-      if(c[3]) line(x*cw, y*cw, x*cw, y*cw+cw);
+      if(c[0]) line(x*cw, y*ch, x*cw+cw, y*ch);
+      if(c[1]) line(x*cw+cw, y*ch, x*cw+cw, y*ch+ch);
+      if(c[2]) line(x*cw, y*ch+ch, x*cw+cw, y*ch+ch);
+      if(c[3]) line(x*cw, y*ch, x*cw, y*ch+ch);
     }
   }
   if(done) noLoop();

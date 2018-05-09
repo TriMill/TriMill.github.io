@@ -21,8 +21,8 @@ function expandMaze(maze, w, h) {
   for(x = 0; x < w; x++) {
     a.push([]);
     for(y = 0; y < h; y++) {
-      a[x].push([]);
-      var index = 4*(y + x*w)
+      a[x][y] = [];
+      var index = 4*(y + x*h)
       a[x][y].push(maze[index+0]);
       a[x][y].push(maze[index+1]);
       a[x][y].push(maze[index+2]);

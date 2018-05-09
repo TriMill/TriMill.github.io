@@ -50,9 +50,11 @@ function setupSelects() {
 }
 
 function newMaze() {
-  canvasSize = elem('maze-width').value;
-  resizeCanvas(canvasSize, canvasSize);
-  numCells = elem('num-cells').value;
+  canvasWidth = elem('width').value;
+  canvasHeight = elem('height').value;
+  resizeCanvas(canvasWidth, canvasHeight);
+  mazeWidth = elem('maze-width').value;
+  mazeHeight = elem('maze-height').value;
   var selectBias = elem('bias');
   bias = selectBias.options[selectBias.selectedIndex].value;
   frameRate(int(elem('speed').value));
@@ -64,7 +66,7 @@ function getPermalinkURL() {
   var url = location.href;
   if(url.endsWith('index.html')) url = url.substring(0, url.length-'index.html'.length);
   url += 'v/?';
-  var w = canvasSize, h = canvasSize, mw = numCells, mh = numCells;
+  var w = canvasWidth, h = canvasHeight, mw = mazeWidth, mh = mazeHeight;
   var fg = red(colorfg)+'_'+green(colorfg)+'_'+blue(colorfg);
   var bg = red(colorbg)+'_'+green(colorbg)+'_'+blue(colorbg);
   var wte = borderWeight;
