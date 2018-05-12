@@ -1,0 +1,116 @@
+{
+  "website": "trimill.github.io",
+  "pages_url": "trimill.github.io/pages.json",
+  "pages": {
+    "home": {
+      "name": "Home",
+      "codename": null,
+      "path": "/",
+      "tags": [
+        "home",
+        "trimill",
+        "github",
+        "homepage",
+        "main",
+        "index"
+      ]
+    },
+    "projects": {
+      "name": "Projects",
+      "codename": "projects",
+      "path": "/projects/",
+      "tags": [
+        "projects",
+        "javascript",
+        "css",
+        "tool",
+        "p5js",
+        "interactive",
+        "educational",
+        "fun",
+        "game"
+      ]
+    },
+    "art": {
+      "name": "Art",
+      "codename": "art",
+      "path": "/art/",
+      "tags": [
+        "art",
+        "projects",
+        "javascript",
+        "p5js",
+        "interactive",
+        "educational",
+        "fun",
+        "generative",
+        ""
+      ]
+    },
+    "mini": {
+      "name": "Mini Projects",
+      "codename": "mini",
+      "path": "/mini/",
+      "tags": [
+        "projects",
+        "mini",
+        "javascript",
+        "css",
+        "tool",
+        "p5js",
+        "art"
+      ]
+    },
+    "programming": {
+      "name": "Programming",
+      "codename": "programming",
+      "path": "/programming/",
+      "tags": [
+        "projects",
+        "javascript",
+        "css",
+        "programming",
+        "esoteric",
+        "symple",
+        "diretion",
+        "language"
+      ]
+    },
+    "mazemaker": {
+      "name": "Maze Maker",
+      "codename": "mazemaker",
+      "path": "/projects/mazemaker/",
+      "tags": [
+        "projects",
+        "javascript",
+        "css",
+        "tool",
+        "p5js",
+        "interactive",
+        "maze",
+        "maker",
+        "puzzle",
+        "creator"
+      ]
+    },
+    "elementsgame": {
+      "name": "Elements Game",
+      "codename": "elementsgame",
+      "path": "/projects/elementsgame/",
+      "tags": [
+        "projects",
+        "javascript",
+        "css",
+        "game",
+        "p5js",
+        "element",
+        "alchemy",
+        "god",
+        "water",
+        "earth",
+        "fire",
+        "air"
+      ]
+    }
+  }
+}

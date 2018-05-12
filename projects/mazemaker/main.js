@@ -3,6 +3,7 @@ p5.disableFriendlyErrors = true;
 var canvasWidth = 720;
 var canvasHeight = 720;
 var mazeWidth = 18, mazeHeight = 18;
+var shiftpop = 0;
 var colorfg, colorbg, borderWeight;
 var showOverlay = true;
 var showCurrent = true;
@@ -133,7 +134,18 @@ function chooseNextCell() {
     cells[cx][cy][4] = false;
   } else if(stack.length > 0) {
     // Otherwise, pop the stack
-    var n = stack.pop();
+    var n;
+    if(shiftpop == 0)
+      n = stack.pop();
+    else if(shiftpop == 1)
+      n = stack.shift();
+    else {
+      var rand = random();
+      if(rand > shiftpop)
+        n = stack.pop();
+      else
+        n = stack.shift();
+    }
     cx = n[0];
     cy = n[1];
     cells[cx][cy][5] = false;

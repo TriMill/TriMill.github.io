@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="TriMill">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="../../stylesheet.css" type="text/css" rel="stylesheet" />
+  <title>Selfie</title>
+  <script>window.$=function(i){document.getElementById('text').value=i}</script>
+  <script>window.$$=function(){return document.getElementById('text').value}</script>
+</head>
+<body>
+  <h1>Selfie</h1>
+  <textarea id="text" rows="20" cols="80" style="font-family:'Cousine';padding:5px;font-size:16px;"></textarea><br>
+  <input type="button" onclick="eval(document.getElementById('text').value);" value="Evaluate"/><br>
+  Enter Javascript code and click "Evaluate" to run it.<br>
+  $: function that replaces the text field's value with the parameter<br>
+  $$: function that returns the text field's value
+</body>
+</html>

@@ -22,11 +22,12 @@
   <div id="canvas-wrapper" style="float: left;"></div>
   <div class="side">
     <h1>Maze maker</h1>
-    Maze width (pixels): <input type="number" id="width" value="720"><br>
-    Maze height (pixels): <input type="number" id="height" value="720"><br>
-    Cells wide: <input type="number" id="maze-width" value="18"><br>
-    Cells high: <input type="number" id="maze-height" value="18"><br>
-
+    Maze width (pixels): <input type="number" id="width" value="720" onchange="prop('w');"><br>
+    Maze height (pixels): <input type="number" id="height" value="720" onchange="prop('h');"><br>
+    Cells wide: <input type="number" id="maze-width" value="18" onchange="prop('mw');"><br>
+    Cells high: <input type="number" id="maze-height" value="18" onchange="prop('mh');"><br>
+    Proportional: <input type="checkbox" id="proportional"><br>
+    Chance to shift instead of pop: <input type="text" id="shiftpop" value="0">%<br>
     Bias: <select id="bias">
       <option value="0" selected>No bias</option>
       <option value="1">Horizontal</option>

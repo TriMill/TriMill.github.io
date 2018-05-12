@@ -55,6 +55,7 @@ function newMaze() {
   resizeCanvas(canvasWidth, canvasHeight);
   mazeWidth = elem('maze-width').value;
   mazeHeight = elem('maze-height').value;
+  shiftpop = elem('shiftpop').value/100;
   var selectBias = elem('bias');
   bias = selectBias.options[selectBias.selectedIndex].value;
   frameRate(int(elem('speed').value));
@@ -73,4 +74,28 @@ function getPermalinkURL() {
   var code = encode(cells);
   url += 'w='+w+'&h='+h+'&mw='+mw+'&mh='+mh+'&fg='+fg+'&bg='+bg+'&wte='+wte+'&code='+code;
   return url;
+}
+
+function prop(from) {
+  if(elem('proportional').checked) {
+    var setW = elem('width').value,
+      setH = elem('height').value,
+      setMW = elem('maze-width').value,
+      setMH = elem('maze-height').value;
+      console.log(setW, setH, setMW, setMH, from);
+    switch(from) {
+      case 'w':
+        elem('height').value = round(setMH/setMW*setW);
+        break;
+      case 'h':
+        elem('width').value = round(setMW/setMH*setH);
+        break;
+      case 'mw':
+        elem('width').value = round(setMW/setMH*setH);
+        break;
+      case 'mh':
+        elem('height').value = round(setMH/setMW*setW);
+        break;
+    }
+  }
 }
