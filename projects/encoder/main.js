@@ -7,6 +7,12 @@ $(function(){
       url = 'https://' + url;
     }
     window.location.href = url;
+    $('body').empty();
+    $('body').append('<div>You should be automatically redirected. '+
+      '<a href="'+url+'">Click here if you aren\'t</a>.</div>');
+    $('body').append('<img src="../../favicon.png" width="32" alt="trimill.github.io favicon">');
+    $('body').append('<div>Encoder provided by '+
+      '<a href="trimill.github.io">trimill.github.io</a></div>');
   } else {
     $('#encode').click(function(){
       var url = $('#url').val();
