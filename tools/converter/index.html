@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="TriMill">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Converter - TriMill</title>
+
+	<script src="main.js"></script>
+  <script src="measures.js"></script>
+  <script src="../../libraries/jquery-3.3.1.js"></script>
+
+  <link href="../../stylesheet.css" type="text/css" rel="stylesheet" />
+
+  <style>
+    p {
+      width: 45%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Unit Converter</h1>
+  <p>Convert between many different units and scales of length, temparture, mass, and area</p>
+  <select id="measure" onchange="measureUpdate();">
+    <option value="length" selected>Length</option>
+    <option value="temp">Temperature</option>
+    <option value="mass">Mass</option>
+    <option value="area">Area</option>
+    <option value="time">Time</option>
+    <option value="volume">Volume</option>
+  </select><br><br>
+  <input id="val1" type="text" onchange="recalc();" value="1">
+  <select id="unit1" onchange="recalc();"></select>
+  <span class="big"> = </span>
+  <input id="val2" type="text" onchange="recalc();">
+  <select id="unit2" onchange="recalc();"></select>
+  <input type="button" value="Switch" onclick="swap();"><br>
+  <p>Results may be rounded or have noise in the last decimal digits.
+    If a result ends with a sequence of '9's, you should round up.
+    If it ends with '0's, you should ignore them. When converting from really
+    small units to really large ones, the result may be zero.</p>
+  </table>
+</body>
+</html>
