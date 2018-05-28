@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Maze maker - TriMill</title>
+
+	<script src="../../libraries/p5.js"></script>
+  <script src="dom.js"></script>
+  <script src="main.js"></script>
+  <script src="bool-x-64.js"></script>
+
+
+  <link href="../../stylesheet.css" type="text/css" rel="stylesheet" />
+
+  <style>
+    * { font-size: 13pt; }
+    input[type="button"], select, input[type="number"], input[type="text"] { font-size: 13pt; }
+    .side { padding-left: 20px; float: left; }
+  </style>
+
+</head>
+<body>
+  <div id="canvas-wrapper" style="float: left;"></div>
+  <div class="side">
+    <h1>Maze maker</h1>
+    Maze width (pixels): <input type="number" id="width" value="720" onchange="prop('w');"><br>
+    Maze height (pixels): <input type="number" id="height" value="720" onchange="prop('h');"><br>
+    Cells wide: <input type="number" id="maze-width" value="18" onchange="prop('mw');"><br>
+    Cells high: <input type="number" id="maze-height" value="18" onchange="prop('mh');"><br>
+    Proportional: <input type="checkbox" id="proportional"><br>
+    Chance to shift instead of pop: <input type="text" id="shiftpop" value="0">%<br>
+    Bias: <select id="bias">
+      <option value="0" selected>No bias</option>
+      <option value="1">Horizontal</option>
+      <option value="-1">Vertical</option>
+    </select><br>
+    <input type="button" id="new-maze" value="New Maze" onclick="newMaze();"><br><br>
+
+    Foreground color: <select id="selectfg" onchange="updateFG()"></select>
+    <input type="text" id="colorfg" value="0, 0, 0"
+      onchange="colorfg = color(elem('colorfg').value.split(', ')); redraw();"><br>
+    Background color: <select id="selectbg" onchange="updateBG()"></select>
+    <input type="text" id="colorbg" value="255, 255, 255"
+      onchange="colorbg = color(elem('colorbg').value.split(', ')); redraw();"><br>
+    Border weight: <input type="number" id="bwait" value="2"
+      onchange="borderWeight = elem('bwait').value; redraw();"><br><br>
+
+    Speed (fps): <input type="number" id="speed" value="30">
+    <input type="button" id="set-speed" value="Set Speed"
+      onclick="frameRate(int(elem('speed').value));"><br>
+    Show current cell: <input type="checkbox" id="current" checked
+      onclick="showCurrent = elem('current').checked;"><br>
+    Show colored overlay: <input type="checkbox" id="overlay" checked
+      onclick="showOverlay = elem('overlay').checked;"><br><br>
+
+    <input type="button" value="Open permalink"
+      onclick="window.open(getPermalinkURL());"><br><br>
+
+    <div id="status">Generating...</div>
+  </div>
+</body>
+</html>

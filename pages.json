@@ -18,53 +18,67 @@
     "projects": {
       "name": "Projects",
       "codename": "projects",
-      "path": "/projects/",
-      "tags": [
-        "projects",
-        "javascript",
-        "css",
-        "tool",
-        "p5js",
-        "interactive",
-        "educational",
-        "fun",
-        "game"
-      ]
+      "path": null,
+      "deprecated": true,
+      "tags": []
     },
     "art": {
       "name": "Art",
       "codename": "art",
-      "path": "/art/",
-      "tags": [
-        "art",
-        "projects",
-        "javascript",
-        "p5js",
-        "interactive",
-        "educational",
-        "fun",
-        "generative",
-        ""
-      ]
+      "path": null,
+      "deprecated": true,
+      "tags": []
     },
     "mini": {
       "name": "Mini Projects",
       "codename": "mini",
-      "path": "/mini/",
+      "path": null,
+      "deprecated": true,
+      "tags": []
+    },
+    "games": {
+      "name": "Games",
+      "codename": "games",
+      "path": "/games",
       "tags": [
+        "games",
+        "fun",
+        "element",
+        "space",
+        "flappy",
+        "javascript"
+      ]
+    },
+    "creative": {
+      "name": "Creative Coding",
+      "codename": "creative",
+      "path": "/creative",
+      "tags": [
+        "creative",
+        "art",
+        "coding",
+        "canvas",
+        "javascript"
+      ]
+    },
+    "tools": {
+      "name": "Tools",
+      "codename": "tools",
+      "path": "/tools",
+      "tags": [
+        "tools",
         "projects",
-        "mini",
-        "javascript",
+        "maze",
+        "text",
+        "html",
         "css",
-        "tool",
-        "p5js",
-        "art"
+        "javascript"
       ]
     },
     "programming": {
       "name": "Programming",
       "codename": "programming",
-      "path": "/programming/",
+      "path": "/tools/programming/",
       "tags": [
         "projects",
         "javascript",
@@ -79,7 +93,7 @@
     "mazemaker": {
       "name": "Maze Maker",
       "codename": "mazemaker",
-      "path": "/projects/mazemaker/",
+      "path": "/tools/mazemaker/",
       "tags": [
         "projects",
         "javascript",
@@ -96,7 +110,7 @@
     "elementsgame": {
       "name": "Elements Game",
       "codename": "elementsgame",
-      "path": "/projects/elementsgame/",
+      "path": "/games/elementsgame/",
       "tags": [
         "projects",
         "javascript",
