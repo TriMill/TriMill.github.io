@@ -14,35 +14,36 @@ body {
 select, input[type="text"], input[type="button"], input[type="number"], button, textarea {
   border: 1px solid #AAA;
   border-radius: 5px;
-  font-size: 14pt;
+  font-size: 12pt;
   outline: none;
-  padding-left: 2px;
-  padding-right: 2px;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  margin-top: 1px;
-  margin-bottom: 1px;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-top: 0.5px;
+  padding-bottom: 0.5px;
+  margin-top: 0.2px;
+  margin-bottom: 0.2px;
 }
 input[type="text"], input[type="number"]{
   width: 15ch;
 }
 input[type="button"], button {
   background-color: #FFF;
-  transition: 0.2s ease;
-  font-size: 15pt;
+  transition: 0.1s ease;
   padding-left: 5px;
   padding-right: 5px;
   padding-top: 4px;
   padding-bottom: 4px;
 }
-input[type="button"]:active, button:active {
+
+input[type="button"]:hover:enabled, button:hover:enabled {
+  background-color: #E6E6E6;
+  transition: 0.1s ease;
+}
+
+input[type="button"]:active:enabled, button:active:enabled {
   background-color: #DDDDDD;
 }
 
-input[type="button"]:hover, button:hover {
-  background-color: #EEEEEE;
-  transition: 0.2s ease;
-}
 .container {
   display: block;
   position: relative;
@@ -97,7 +98,7 @@ input:disabled ~ .checkmark {
   border-style: hidden;
 }
 a {
-  transition: 0.2s ease;
+  transition: 0.1s ease;
 }
 a:link {
   color: #00E;
@@ -105,10 +106,10 @@ a:link {
 a:visited {
   color: #63B;
 }
-a:hover {
+a:hover:enabled {
   color: #88F;
 }
-a:active {
+a:active:enabled {
   color: #00A;
 }
 table {
