@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pixel Circle - TriMill</title>
+
+	<script src="../../libraries/p5.js"></script>
+  <script src="main.js"></script>
+
+  <link href="../../stylesheet.css" type="text/css" rel="stylesheet" />
+
+  <style>
+    .slider {
+      width: 25%;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    Radius:
+    <input type="range" min="0" max="100" value="5" class="slider" id="radius" oninput="updateRadius(this.value)" width="1000px" step="0.1">
+    <input type="text" id="radiusText" oninput="updateRadius(this.value)" value="5">
+  </div>
+  <div>
+    Accuracy (decrease for large circles):
+    <input type="text" id="accuracy" oninput="updateAccuracy(this.value)" value="0.005">
+</body>
+</html>

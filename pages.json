@@ -125,6 +125,20 @@
         "fire",
         "air"
       ]
+    },
+    "pixelcircle": {
+      "name": "Pixel Circle",
+      "codename": "pixelcircle",
+      "path": "/tools/pixelcircle/",
+      "tags": [
+        "projects",
+        "javascript",
+        "p5js",
+        "circle",
+        "pixel",
+        "minecraft",
+        "terraria"
+      ]
     }
   }
 }
