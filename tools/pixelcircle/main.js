@@ -4,7 +4,7 @@ var xoff, yoff;
 var updateCanvas = true;
 var updateCircle = true;
 var rad = 5;
-var step = 0.01;
+var step = 0.005;
 
 function setup() {
   createCanvas(900, 675);
@@ -65,7 +65,7 @@ function mouseWheel(event) {
 }
 
 function traceCircle(r) {
-  for(var ang = 0; ang < TAU; ang += 0.01) {
+  for(var ang = 0; ang < TAU; ang += step) {
     var x = r * cos(ang);
     var y = r * sin(ang);
     var obj = {x: round(x), y: round(y), c: color(100)};
