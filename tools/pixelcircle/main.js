@@ -5,6 +5,7 @@ var updateCanvas = true;
 var updateCircle = true;
 var rad = 5;
 var step = 0.005;
+var gridShow = 10;
 
 function setup() {
   createCanvas(900, 675);
@@ -21,14 +22,21 @@ function draw() {
   if(updateCanvas || updateCircle) {
     background(220);
     stroke(0);
-    strokeWeight(1);
+    if(cs > gridShow) {
+      strokeWeight(1);
+    } else {
+      noStroke();
+    }
     noFill();
-    drawGrid(xoff, yoff, cs);
     if(updateCircle) {
       resetPix();
       traceCircle(rad);
     }
     drawPix();
+    stroke(0);
+    strokeWeight(1);
+    if(cs > gridShow)
+      drawGrid(xoff, yoff, cs);
     updateCircle = false;
     updateCanvas = false;
   }
@@ -60,29 +68,36 @@ function mousePressed() {
 }
 
 function mouseWheel(event) {
-  cs *= event.delta > 0 ? 3/2 : 2/3;
+  cs *= event.delta > 0 ? 4/3 : 3/4;
   updateCanvas = true;
 }
 
 function traceCircle(r) {
+  var lx, ly;
   for(var ang = 0; ang < TAU; ang += step) {
-    var x = r * cos(ang);
-    var y = r * sin(ang);
-    var obj = {x: round(x), y: round(y), c: color(100)};
-    if(!pix.includes(obj)) pix.push(obj);
+    var x = round(r * cos(ang));
+    var y = round(r * sin(ang));
+    var obj = {x: x, y: y, c: color(100)};
+    if(x != lx || y != ly) {
+      pix.push(obj);
+      lx = x;
+      ly = y;
+    }
   }
-  drawPix();
 }
 
 function drawPix() {
   noStroke()
   for(var i = 0; i < pix.length; i++) {
     fill(pix[i].c);
-    rect(pix[i].x*cs + xoff + 1, pix[i].y*cs + yoff + 1, cs - 1, cs - 1);
+    rect(pix[i].x*cs + xoff, pix[i].y*cs + yoff, cs, cs);
   }
   noFill();
   stroke(200, 40, 30);
-  strokeWeight(2);
+  if(cs > 5)
+    strokeWeight(2);
+  else
+    strokeWeight(0.8);
   ellipse(xoff+cs/2, yoff+cs/2, 2*rad*cs, 2*rad*cs);
 }
 
@@ -94,6 +109,8 @@ function updateRadius(value) {
 }
 
 function updateAccuracy(value) {
-  step = value;
-  updateCircle = true;
+  if(value != 0) {
+    step = +value;
+    updateCircle = true;
+  }
 }
