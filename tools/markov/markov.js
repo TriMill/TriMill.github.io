@@ -1,31 +1,40 @@
-let chain = {
-	_start_:[]
+var chain = {
+	'!':[]
 }
 
 function runChain() {
-	let index = '_start_';
-	let word = '';
+	var index = '!';
+	var word = '';
 	while(index != '') {
-		let exits = chain[index];
-		let next = exits[Math.floor(Math.random() * exits.length)];;
-		index = next;
+		var exits = chain[index];
+		var next = exits[Math.floor(Math.random() * exits.length)];
+    if(next == '') break;
+    if(order == 1)
+      index = next;
+    else
+		  index = index.slice(-order+1) + next;
 		word += next;
 	}
 	return word;
 }
 
 function populateChain(corpus) {
-  chain = {_start_:[]};
+  chain = {'!':[]};
   corpus = corpus.replace(/[^A-Za-z\s]|_/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
   corpus = ' ' + corpus + ' ';
-	console.log(corpus);
-  for(let i = 0; i < corpus.length; i++) {
-    if(corpus[i+1] == undefined) break;
-    let curr = corpus[i];
-    let next = corpus[i+1];
-    if(curr == ' ') curr = '_start_';
-    if(next == ' ') next = '';
-    if(chain[curr] == undefined) chain[curr] = [];
-    chain[curr].push(next);
+  for(var i = 1; i < corpus.length; i++) {
+    var cur = corpus[i];
+    var prev = '';
+    for(var j = 0; j < order; j++) {
+      if(corpus[i-1-j] == ' ') {
+        prev = '!' + prev;
+        break;
+      }
+      prev = corpus[i-1-j] + prev;
+    }
+    if(cur == ' ') cur = '';
+    if(chain[prev] == undefined) chain[prev] = [];
+    chain[prev].push(cur);
   }
+  console.log(chain);
 }

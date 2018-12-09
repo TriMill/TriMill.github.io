@@ -9,6 +9,7 @@
 
 	<script src="main.js"></script>
 	<script src="markov.js"></script>
+  <script src="presets.js"></script>
 
   <link href="../../stylesheet.css" type="text/css" rel="stylesheet" />
 
@@ -31,13 +32,24 @@
 	chain many times and make a list of the output probabilities. Enter text in
 	the box to create a new Markov chain from the text
 	you entered.</p>
-	<textarea rows="4" cols="80" id="corpus" onchange="repopulate()">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	</textarea>
+	<textarea rows="4" cols="80" id="corpus" onchange="repopulate()"> </textarea>
+  <br>
+  Presets:
+  <select id="preset" onchange="preset()">
+    <option value="lipsum">Lorem Ipsum</option>
+    <option value="wikipedia">Wikipedia</option>
+    <option value="names">Names</option>
+    <option value="beemovie">Bee Movie</option>
+    <option value="astronomy">Astronomy</option>
+
+  </select>
 	<br>
 	<label for="min_length">Minimum length&nbsp;&nbsp;</label> <input type="number" id="min_length"
 	value="3" onchange="minmax()" min="0" max="50"><br>
 	<label for="max_length">Maximum length&nbsp;</label> <input type="number" id="max_length"
-	value="10" onchange="minmax()" min="0" max="50">
+	value="10" onchange="minmax()" min="0" max="50"><br>
+  <label for="markov_order">Markov order&nbsp;</label> <input type="number" id="markov_order"
+	value="1" onchange="setOrder()" min="1" max="4">
 	<p></p>
 	<button id="run" onclick="repeatRun(1)">Run Markov Chain</button>
 	<button id="run5" onclick="repeatRun(5)">Run 5 times</button>

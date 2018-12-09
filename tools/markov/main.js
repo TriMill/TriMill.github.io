@@ -2,8 +2,9 @@ const SAMPLES = 500000;
 const TRIES = 50000;
 const FAILTEXT = 'Input conditions may be impossible: tried ' + TRIES + ' times and failed.';
 
-let minLength = 3;
-let maxLength = 10;
+var minLength = 3;
+var maxLength = 10;
+var order = 1;
 
 window.onload = function() {
 	repopulate();
@@ -11,13 +12,13 @@ window.onload = function() {
 
 function repeatRun(times) {
 	document.getElementById('results').innerHTML = '';
-	for(let i = 0; i < times; i++) {
-		let word = getGoodChainOutput();
+	for(var i = 0; i < times; i++) {
+		var word = getGoodChainOutput();
 		if(word == null) {
 			document.getElementById('results').innerHTML = FAILTEXT;
 			return;
 		}
-		let p = document.createElement("P");
+		var p = document.createElement("P");
 		p.className = "nospace";
 		p.innerHTML = word;
 		document.getElementById('results').appendChild(p);
@@ -25,9 +26,9 @@ function repeatRun(times) {
 }
 
 function repeatRunReturn(times) {
-	let ret = [];
-	for(let i = 0; i < times; i++) {
-		let ch = getGoodChainOutput();
+	var ret = [];
+	for(var i = 0; i < times; i++) {
+		var ch = getGoodChainOutput();
 		if(ch == null) return null;
 		ret.push(ch);
 	}
@@ -35,8 +36,8 @@ function repeatRunReturn(times) {
 }
 
 function getGoodChainOutput() {
-	let word = runChain();
-	let i = 0;
+	var word = runChain();
+	var i = 0;
 	while(word.length < minLength || word.length > maxLength) {
 		word = runChain();
 		i++
@@ -51,23 +52,23 @@ function analyze() {
 }
 
 function doAnalyze() {
-	let run = repeatRunReturn(SAMPLES);
+	var run = repeatRunReturn(SAMPLES);
 	if(run == null) {
 		document.getElementById('results').innerHTML = FAILTEXT;
 	}
-	let results = {};
-	for(let i = 0; i < run.length; i++) {
-		let w = run[i];
+	var results = {};
+	for(var i = 0; i < run.length; i++) {
+		var w = run[i];
 		if(results[w] != undefined) results[w] += 1;
 		else results[w] = 1;
 	}
-	let sorted = Object.keys(results).sort(function(a, b) {return results[b]-results[a]});
+	var sorted = Object.keys(results).sort(function(a, b) {return results[b]-results[a]});
 	sorted.splice(50);
-	let final = '';
-	for(let i = 0; i < sorted.length; i++) {
+	var final = '';
+	for(var i = 0; i < sorted.length; i++) {
 		final += sorted[i];
-		let ns = Math.ceil((maxLength+1)/2) - sorted[i].length + 1;
-		for(let i = 0; i < ns; i++) { final += '&nbsp;'; }
+		var ns = Math.ceil((maxLength+1)/2) - sorted[i].length + 1;
+		for(var i = 0; i < ns; i++) { final += '&nbsp;'; }
 		final += '(' + format(Math.round(10000*results[sorted[i]]/SAMPLES)/100, 1, 2) + '%)';
 		final += '<br>';
 	}
@@ -75,9 +76,9 @@ function doAnalyze() {
 }
 
 function format(number, wholeDigits, decimalDigits) {
-	let nstr = String(number);
-	let parts = nstr.split('.');
-	let whole = parts[0], decimal = parts[1];
+	var nstr = String(number);
+	var parts = nstr.split('.');
+	var whole = parts[0], decimal = parts[1];
 	while(whole != null && whole.length < wholeDigits) {
 		whole = '0' + whole;
 	}
@@ -90,11 +91,21 @@ function format(number, wholeDigits, decimalDigits) {
 }
 
 function repopulate() {
-	let corpus = document.getElementById('corpus').value;
+	var corpus = document.getElementById('corpus').value;
 	populateChain(corpus);
 }
 
 function minmax() {
 	minLength = document.getElementById('min_length').value;
 	maxLength = document.getElementById('max_length').value;
+}
+
+function setOrder() {
+  order = document.getElementById('markov_order').value;
+  repopulate();
+}
+
+function preset() {
+  document.getElementById('corpus').value = presets[document.getElementById('preset').value];
+  repopulate();
 }
