@@ -117,3 +117,7 @@ sub {
 math {
   font-family: "Baskerville", "Computer Modern", "Times New Roman";
 }
+
+.edit::before {
+  content: "✩ "
+}
