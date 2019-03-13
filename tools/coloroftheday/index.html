@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="TriMill">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Color of the day - TriMill</title>
+
+	<script src="sketch.js"></script>
+  <script src="seedrandom.min.js"></script>
+  <link rel="stylesheet" href="../../stylesheet.css">
+
+  <style>
+    div.square {
+      width: 200px;
+      height: 200px;
+      background: #ffff00;
+      border: 1.5px solid black;
+    }
+    body {
+      width: 800px;
+    }
+  </style>
+</head>
+<body onload="today()">
+  <h1>Color of the day</h1>
+  <div> Select date:
+    <input type="date" id="date" onchange="update()" />
+    <input type="button" value="Today" onclick="today()" />
+  </div> <br />
+  <div class="square" id="color-square"> </div>
+  <div id="color-name"></div> <br />
+  <p> The color is randomly generated using the date as a seed, so each day will always give the same number, no matter when it is accessed or what browser you use. There are over 16 million possible colors, so it is unlikely that the same color will ever appear twice (although it could have the same name). The names are usually accurate, but it's not hard to find completely wrong ones (ex. 08/25/2010). Try entering your birthdate or another important date and see what color you get!
+</body>
+</html>
