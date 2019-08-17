@@ -1,63 +1,85 @@
+// Cell size; the width/height of each pixel
 var cs = 60;
+// The zoom level
+var zoom = 0;
+// The list of pixels to shade
 var pix = [];
+// The x and y offsets
 var xoff, yoff;
+// If the canvas or circle need updating
 var updateCanvas = true;
 var updateCircle = true;
-var rad = 5;
-var steps = 2000;
+// The circle's radius
+var rad = 5.1;
+// The accuracy of the circle
+var steps = 8000;
+// The cell size below which the grid is not drawn
 var gridShow = 10;
+// Whether or not the center is even
 var evenCenter = false;
 
+// Theme colors
+var BACKGR, FOREGR, COLOR;
+
+//Create the canvas, initialize the input fields, and set the theme colors.
 function setup() {
-  createCanvas(900, 675);
+  var canvas = createCanvas(900, 675);
+  canvas.parent('canvas-wrapper');
   document.getElementById('radius').value = rad;
   document.getElementById('radiusText').value = rad;
   document.getElementById('evenCenter').value = evenCenter;
   document.getElementById('accuracy').value = steps;
-  xoff = width/2-cs/2, yoff = height/2-cs/2;
+  xoff = width/2-cs/2;
+  yoff = height/2-cs/2;
   resetPix();
+  BACKGR = color(220);
+  FOREGR = color(100);
+  COLOR = color(30, 160, 60);
 }
 
+//Delete the old circle and create the highlighted center
 function resetPix() {
   pix = [];
-  pix.push({x: 0, y: 0, c: color(200, 40, 30)});
+  pix.push({x: 0, y: 0, c: COLOR});
   if(evenCenter) {
-    pix.push({x: 0, y: 1, c: color(200, 40, 30)});
-    pix.push({x: 1, y: 0, c: color(200, 40, 30)});
-    pix.push({x: 1, y: 1, c: color(200, 40, 30)});
+    pix.push({x: 0, y: 1, c: COLOR});
+    pix.push({x: 1, y: 0, c: COLOR});
+    pix.push({x: 1, y: 1, c: COLOR});
   }
 }
 
+//When an update occurs, redraw the canvas on the next frame.
 function draw() {
   if(updateCanvas || updateCircle) {
-    background(220);
-    stroke(0);
-    if(cs > gridShow) {
-      strokeWeight(1);
-    } else {
-      noStroke();
-    }
-    noFill();
+    background(BACKGR);
+    // If only the canvas is updated, the circle doesn't need to be retraced.
     if(updateCircle) {
       resetPix();
+      // Slightly decrease the radius in certian cases to prevent glitches.
       var r = rad;
       if(!evenCenter && abs(round(r) - r) == 0.5) 
-        r -= 0.000001; 
+        r -= 0.00000001; 
       else if(evenCenter && round(r) - r == 0) 
-        r -= 0.000001;
+        r -= 0.00000001;
+      // Trace the circle to find which pixels are inside it.
       traceCircle(r);
     }
+    // Draw the colored pixels to the screen.
     drawPix();
     stroke(0);
     strokeWeight(1);
+    // If not zoomed out too far, draw the grid.
     if(cs > gridShow)
       drawGrid(xoff, yoff, cs);
+    // Draw the highlighted circle path.
     drawCirclePath()
+    // Do not update again immediately after this.
     updateCircle = false;
     updateCanvas = false;
   }
 }
 
+//Draw the grid of horsizontal and veritcal lines.
 function drawGrid(xoff, yoff, gap) {
   for(var x = xoff%gap; x < width; x += gap) {
     line(x, 0, x, height);
@@ -67,7 +89,9 @@ function drawGrid(xoff, yoff, gap) {
   }
 }
 
-var lastX, lastY
+
+var lastX, lastY;
+//Move the image around when dragged.
 function mouseDragged() {
   if(mouseX > 0 && mouseY > 0) {
     xoff += mouseX - lastX;
@@ -78,25 +102,33 @@ function mouseDragged() {
   }
 }
 
+//Start the drag.
 function mousePressed() {
   lastX = mouseX;
   lastY = mouseY;
 }
 
+//Zoom in and out by scrolling.
 function mouseWheel(event) {
-  cs *= event.delta > 0 ? 6/5 : 5/6;
+  zoom += event.delta > 0 ? -1 : 1;
+  zoom = constrain(zoom, -25, 11);
+  cs = 60 * Math.pow(9/8, zoom);
   updateCanvas = true;
 }
 
+//Find which pixels are in the path of the circle by tracing it.
 function traceCircle(r) {
   var lx, ly;
   var cx = 0, cy = 0;
   if(evenCenter) { cx = 0.5; cy = 0.5; }
+  // Go around the circle in <steps> number of steps
   for(var ang = 0; ang < 1; ang += 1/steps) {
     var x = round(r * cos(ang*TAU) + cx);
     var y = round(r * sin(ang*TAU) + cy);
-    var obj = {x: x, y: y, c: color(100)};
+    // If the location is different from the previous one...
     if(x != lx || y != ly) {
+      // ...create a shaded pixel at the location
+      var obj = {x: x, y: y, c: color(FOREGR)};
       pix.push(obj);
       lx = x;
       ly = y;
@@ -104,6 +136,7 @@ function traceCircle(r) {
   }
 }
 
+// Draw the colored pixels to the screen
 function drawPix() {
   noStroke()
   for(var i = 0; i < pix.length; i++) {
@@ -112,24 +145,30 @@ function drawPix() {
   }
 }
 
+// Draw the colored circle path
 function drawCirclePath() {
   noFill();
-  if(cs > 5) strokeWeight(2);
-  else strokeWeight(0.8);
+  // Choose stroke weight based on zoom level
+  if(cs > 20) strokeWeight(2.5);
+  else if(cs > gridShow) strokeWeight(1.5);
+  else strokeWeight(1);
   var cx = 0, cy = 0;
   if(evenCenter) { cx = 0.5; cy = 0.5; }
-  stroke(220, 42, 32);
-  strokeWeight(2)
+  stroke(COLOR);
   ellipse(xoff + cx*cs + cs/2, yoff + cy*cs + cs/2, 2*rad*cs, 2*rad*cs);
 }
 
+// Change the radius of the circle
 function updateRadius(value) {
+  // Make sure the slider and text field match.
   document.getElementById('radius').value = value;
   document.getElementById('radiusText').value = value;
   rad = value;
   updateCircle = true;
 }
 
+
+// Change the accuracy.
 function updateAccuracy(value) {
   if(value != 0) {
     steps = +value;
@@ -137,6 +176,7 @@ function updateAccuracy(value) {
   }
 }
 
+// Change the center between odd (one pixel) and even (four pixels).
 function updateCenter(value) {
   old = evenCenter
   if(old == true && value == false) {
@@ -148,5 +188,14 @@ function updateCenter(value) {
   }
   evenCenter = value;
   
+  updateCircle = true;
+}
+
+// Reset drag and zoom.
+function resetMotion() {
+  zoom = 0;
+  cs = 60;
+  xoff = width/2-cs/2;
+  yoff = height/2-cs/2;
   updateCircle = true;
 }

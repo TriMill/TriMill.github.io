@@ -23,13 +23,18 @@
   <div>
     Radius:
     <input type="range" min="0" max="100" value="5" class="slider" id="radius" oninput="updateRadius(this.value)" width="1000px" step="0.1">
-    <input type="text" id="radiusText" oninput="updateRadius(this.value)" value="5">
+    <input type="text" id="radiusText" oninput="updateRadius(this.value);" value="5">
   </div>
 	<div>
-		<input type="checkbox" id="evenCenter" oninput="updateCenter(this.checked)"> Even center?
+		<input type="checkbox" id="evenCenter" oninput="updateCenter(this.checked);"> Even center?
 	</div>
   <div>
     Accuracy (increase for large circles):
-    <input type="text" id="accuracy" oninput="updateAccuracy(this.value)" value="2000">
+    <input type="text" id="accuracy" oninput="updateAccuracy(this.value);" value="8000">
+	</div>
+	<div id="canvas-wrapper"></div>
+	<div>
+		<input type="button" id="reset" onclick="resetMotion();" value="Reset motion">
+	</div>
 </body>
 </html>
