@@ -22,11 +22,11 @@
 <body>
   <div>
     Radius:
-    <input type="range" min="0" max="100" value="5" class="slider" id="radius" oninput="updateRadius(this.value)" width="1000px" step="0.1">
-    <input type="text" id="radiusText" oninput="updateRadius(this.value);" value="5">
+    <input type="range" min="0" max="100" value="5" class="slider" id="radius-slider" oninput="updateRadius(this.value)" width="1000px" step="0.1">
+    <input type="text" id="radius-text" oninput="updateRadius(this.value);" value="5">
   </div>
 	<div>
-		<input type="checkbox" id="evenCenter" oninput="updateCenter(this.checked);"> Even center?
+		<input type="checkbox" id="even-center" oninput="updateCenter(this.checked);"> Even center?
 	</div>
   <div>
     Accuracy (increase for large circles):

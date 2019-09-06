@@ -25,9 +25,9 @@ var BACKGR, FOREGR, COLOR;
 function setup() {
   var canvas = createCanvas(900, 675);
   canvas.parent('canvas-wrapper');
-  document.getElementById('radius').value = rad;
-  document.getElementById('radiusText').value = rad;
-  document.getElementById('evenCenter').value = evenCenter;
+  document.getElementById('radius-slider').value = rad;
+  document.getElementById('radius-text').value = rad;
+  document.getElementById('even-center').value = evenCenter;
   document.getElementById('accuracy').value = steps;
   xoff = width/2-cs/2;
   yoff = height/2-cs/2;
@@ -161,8 +161,8 @@ function drawCirclePath() {
 // Change the radius of the circle
 function updateRadius(value) {
   // Make sure the slider and text field match.
-  document.getElementById('radius').value = value;
-  document.getElementById('radiusText').value = value;
+  document.getElementById('radius-slider').value = value;
+  document.getElementById('radius-text').value = value;
   rad = value;
   updateCircle = true;
 }
