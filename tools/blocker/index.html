@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="TriMill">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Blocker - TriMill</title>
+
+	<script src="main.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+	
+	<style>
+	body, html {width: 100%; height: 100%; margin: 0; padding: 0}
+	.flexbox-container {display: flex; width: 100%; height: 100%; flex-direction: column; overflow: hidden;}
+	.iframe {flex-grow: 1; border: none; margin: 0; padding: 0;}
+	</style>
+</head>
+<body>
+	<div class="flexbox-container">
+		<div id="row-hide">
+			<h1>History blocker</h1>
+			<p>View websites without recording them in browser history</p>
+			<p>Some websites do not allow loading cross-origin, so those will not work in this.</p>
+			Url:
+			<input type="text" id="url" style="width: 40%" value="https://trimill.github.io/"
+				onchange="if(!this.value.includes('://')){this.value = 'http://' + this.value}; document.getElementById('iframe').src=this.value;">
+			<br />
+			<input type="button" id="minimize" value="Minimize toolbar" onclick="
+				document.getElementById('row-hide').style.display='none';
+				document.getElementById('row-show').style.display='block';
+				">
+		</div>
+		<div id="row-show" style="display:none">
+			<input type="button" id="maximize" value="ˇ" style="padding:2px 1px 0px 1px;" onclick="
+				document.getElementById('row-hide').style.display='block';
+				document.getElementById('row-show').style.display='none';
+				">
+		</div>
+		<iframe id="iframe"  style="border:none; height:100%" src="https://trimill.github.io/">
+		</iframe>
+	</div>
+	
+	<script>
+	document.getElementById('url').value = 'https://trimill.github.io/';
+	</script>
+</body>
+</html>
