@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="TriMill">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Big Text - TriMill</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="index.js"></script>
+  <link rel="stylesheet" href="../../stylesheet.css" id="main">
+  <link rel="stylesheet" href="stylesheet.css" id="style">
+
+	<style>
+	</style>
+</head>
+<body onload="init();">
+  <script src="testfont.js"></script>
+  <h1>Federalist vs Democratic-Republican quiz</h1>
+  <p>Around 1800, there were two main political parties in the US: Federalists and Democratic-Republicans. Which one are you?</p>
+	<div class="grid-container">
+ 		<div class="grid-title">Question</div>
+ 		<div class="grid-header">Strongly disagree</div>
+	  <div class="grid-header">Disagree</div>
+	  <div class="grid-header">Neutral</div>
+	  <div class="grid-header">Agree</div>
+	  <div class="grid-header">Strongly agree</div>
+		<div class="question" id="q_live">I live in an urban environment (not agricultural or countryside)</div>
+	  <div class="question" id="q_edu">Rule should be restricted to only educated people</div>
+		<div class="question" id="q_vote">Voting rights can be extended to new groups of people if neccesary</div>
+		<div class="question" id="q_power">The federal government should be weak</div>
+		<div class="question" id="q_const">The constitution should be interpreted strictly</div>
+		<div class="question" id="q_assist">The government should assist agriculture (not business and manufacturing)</div>
+		<div class="question" id="q_ally">Alliance with Britain (not France)</div>
+		<div class="question" id="q_debt">The national debt can be beneficial</div>
+		<div class="question" id="q_bank">A powerful central bank is important</div>
+		<div class="question" id="q_navy">The navy should not be the focus of spending</div>
+</div> 
+<br />
+<input type="button" value="Get results" id="get_results" style="font-size: 16pt;">
+<div id="results"></div>
+</body>
+</html>
