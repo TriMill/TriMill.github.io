@@ -1,21 +1,20 @@
-const G = 0.5;
-const TERM = 8;
-
 function Bird() {
-  this.width = 60;
-  this.height = 60;
+  this.width = birdHitboxSize;
+  this.height = birdHitboxSize;
+  this.iconwidth = birdDrawSize;
+  this.iconheight = birdDrawSize;
   this.pos = height/2-this.height/2;
   this.vel = 0;
   this.acc = -3;
   this.xpos = 300;
 
   this.show = function() {
-    image(birdImage, this.xpos, this.pos, this.width, this.height);
+    image(birdImage, this.xpos, this.pos, this.iconwidth, this.iconheight);
   }
 
   this.update = function() {
     this.vel += this.acc;
-    this.vel = constrain(this.vel, -15, 15);
+    this.vel = constrain(this.vel, -termVel, termVel);
     this.pos += this.vel;
     this.acc = 0;
   }
