@@ -31,7 +31,7 @@ function keyDown(e) {
     menuKey(e.key, e.keyCode);
   }
   else if(e.key == ' ' && gamestate != 'dead' && gamestate != 'start')
-    bird.applyForce(flapForce);
+    bird.applyForce(flapForce, 'flap');
   else if(e.keyCode == 13 && (gamestate == 'dead' || gamestate == 'start')) {
     newGame()
   }

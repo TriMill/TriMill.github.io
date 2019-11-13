@@ -1,7 +1,7 @@
 
 function Block() {
   this.x = width+capWidth;
-  this.y = height-(random(height-blockSize*2)+blockSize);
+  this.y = height-(random(height-blockSize)+blockSize);
   this.passed = false;
 
   this.show = function() {

@@ -34,9 +34,9 @@ function draw() {
     doBird();
     pipesAndBlocks();
     showScore();
-    bscroll1 += 2;
+    bscroll1 += 2*scrollSpeed;
     bscroll1 %= imageWidth;
-    bscroll2 += 1;
+    bscroll2 += 1*scrollSpeed;
     bscroll2 %= imageWidth;
     frame++;
   } else if(gamestate == 'dead' || gamestate == 'start') {
@@ -70,7 +70,7 @@ function drawBackground(imageWidth) {
 }
 
 function doBird() {
-  bird.applyForce(gravity);
+  bird.applyForce(gravity, 'grav');
   bird.update();
   bird.show();
   if(bird.pos > height) gamestate = 'dead';
@@ -78,14 +78,14 @@ function doBird() {
 }
 
 function pipesAndBlocks() {
-  if(frame%240==0)  {
-    if(random(3)>1)
-      pipes.push(new Pipe());
-    else
+  if(frame % framesBetweenObstacle == 0)  {
+    if(random(1) < blockChance)
       blocks.push(new Block());
+    else
+      pipes.push(new Pipe());
   }
   for(var i = 0; i < pipes.length; i++) {
-    pipes[i].x -= 3;
+    pipes[i].x -= 3*scrollSpeed;
     var p = pipes[i].show();
     if(pipes[i].intersects(bird)) gamestate = 'dead';
     if(p) {
@@ -94,7 +94,7 @@ function pipesAndBlocks() {
     }
   }
   for(var i = 0; i < blocks.length; i++) {
-    blocks[i].x -= 3;
+    blocks[i].x -= 3*scrollSpeed;
     var p = blocks[i].show();
     if(blocks[i].intersects(bird)) gamestate = 'dead';
     if(p) {
@@ -156,7 +156,7 @@ function mouseClicked() {
   if(gamestate == 'menu') {
     menuClick(mouseX, mouseY, mouseButton);
   } else if(gamestate == 'game' ) {
-    bird.applyForce(flapForce);
+    bird.applyForce(flapForce, 'flap');
   } else if((gamestate == 'start' || gamestate == 'dead') && mouseY > height/2 + 75) {
     if(mouseX < width/2) {
       newGame()
