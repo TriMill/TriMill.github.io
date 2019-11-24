@@ -11,13 +11,13 @@ input[type="color"] {
 }
 .wrapper {
 	float: left;
-  border: 2px solid #000;
+  border: 2px solid var(--thick-border-color);
   border-radius: 4px;
-  transition: 0.2s ease;
+  transition: 0.05s ease;
 }
 .wrapper:active {
 	float: left;
-  border: 2px solid #66C;
+  border: 2px solid var(--border-color);
   border-radius: 4px;
-  transition: 0.2s ease;
+  transition: 0.05s ease;
 }

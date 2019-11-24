@@ -1,8 +1,9 @@
 $(function() {
-  let text = param('text'), fg = param('fg'), bg = param('bg')
+  let mode = param('mode'), text = param('text');
+  let fg = param('fg'), bg = param('bg');
   let font = param('font'), gft = param('gft');
-  if(text && fg && bg && font) {
-    display(text, '#'+fg, '#'+bg, font, gft);
+  if(mode && text && fg && bg && font) {
+    display(mode, text, '#'+fg, '#'+bg, font, gft);
     return;
   }
   addFontsToDropdown();
@@ -11,7 +12,7 @@ $(function() {
 
 function addFontsToDropdown() {
   let fonts = ['Arial', 'Helvetica', 'Verdana', 'Segoe UI', 'Trebuchet MS', 'Impact',
-    'Times New Roman', 'Times', 'Georgia', 'Courier', 'Consolas', 'Fixedsys Excelsior 3.01'];
+    'Times New Roman', 'Times', 'Georgia', 'Courier', 'Consolas'];
   for(let i = 0; i < fonts.length; i++) {
     if(isFontAvailable(fonts[i])) {
       $('#font').append($('<option value="'+fonts[i]+'">'+fonts[i]+'</option>'));
@@ -34,7 +35,11 @@ function setupColorPickers() {
 
 
 function show() {
+  let mode = $('[name="mode"]:checked').val();
   let text = $('#text').val();
+  if(mode == 'datetime') {
+    text = $('#date').val();
+  }
   let fg = $('#foreground').val().substring(1);
   let bg = $('#background').val().substring(1);
   let gft = $('[name="ftype"]:checked').val() == 'ggl';
@@ -42,14 +47,15 @@ function show() {
   if(gft)
     font = $('#gfont').val();
   window.location.href = window.location.href.split('?')[0] +
-    '?text='+(text==''?'%00':text)+'&fg='+fg+'&bg='+bg+'&font='+font+'&gft='+gft;
+    '?mode='+mode+'&text='+(text==''?'%00':text)+'&fg='+fg+'&bg='+bg
+    +'&font='+font+'&gft='+gft;
 }
 
-function display(text, fg, bg, font, gft) {
+function display(mode, text, fg, bg, font, gft) {
   console.log(font);
   let body = $('body');
   body.html('');
-  let div = $('<div></div>');
+  let div = $('<div id="displaytext"></div>');
   div.html(text);
   body.append(div);
   $('#main').remove();
@@ -63,6 +69,13 @@ function display(text, fg, bg, font, gft) {
   body.css('background-color', bg);
   body.css('line-height', 1);
   $('head').append('<link rel="stylesheet" type="text/css" href="show.css">');
+  
+  if(mode == 'datetime') {
+    setInterval(() => {
+      dtf = JSJoda.DateTimeFormatter.ofPattern(text)
+      $('#displaytext').html(JSJoda.LocalDateTime.now().format(dtf))
+    }, 100)
+  }
 }
 
 function param(name, url) {

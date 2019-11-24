@@ -7,6 +7,7 @@
   <meta name="google-site-verification" content="-GRN7sqZ_zQsps__wg5wxKGonb-4NoQbTYQGyQlRRyU" />
 
   <link href="stylesheet.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="universal-script.js"> </script>
 
 	<title>Home - TriMill</title>
 </head>
@@ -16,6 +17,10 @@
 <p>
 	Creating interactive art, online tools, games, and many other interesting things
   using Javascript, HTML, and CSS
+</p>
+<p>
+  <a href="#" title="Dark/light mode" onclick="localStorage.setItem('mode', (localStorage.getItem('mode') || 'dark') === 'dark' ? 'light' : 'dark'); localStorage.getItem('mode') === 'dark' ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark')" /> Dark/light mode </a>
+	
 </p>
 <h3>Categories:</h3>
 	<ul>
@@ -42,10 +47,6 @@
 		<li> <a href="https://cow-gator.github.io/" rel="noopener">Cow-Gator</a></li>
 		<li> <a href="https://brookfeild.github.io/" rel="noopener">Brookfeild</a></li>
 	</ul>
-<h3>Privacy & stuff</h3>
-<p>
-  Here at trimill.github.io, we don't care about your personal info. We don't collect any of it, and even if we did we don't have any servers, so there's no where we could put it. We do, however, use some cookies to keep track of your progress on things like Elements Game.
-</p>
 <a href="https://github.com/TriMill/TriMill.github.io" rel="noopener">This repository on GitHub</a><br>
 
 </body>

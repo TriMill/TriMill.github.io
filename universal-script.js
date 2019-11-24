@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",e=>{"dark"===(localStorage.getItem("mode")||"dark")?document.querySelector("body").classList.add("dark"):document.querySelector("body").classList.remove("dark")});

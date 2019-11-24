@@ -1,20 +1,60 @@
 @import url('https://fonts.googleapis.com/css?family=Cousine|Open+Sans');
-
+:root {
+  --bg-color: #fff;
+  --elem-bg-color: #eee;
+  --fg-color: #000;
+  
+  --button-hover: #eee;
+  --button-active: #ddd;
+  
+  --border-color: #aaa;
+  --thick-border-color: #000;
+  
+  --link-color: #00e;
+  --link-visited-color: #63b;
+  --link-active-color: #00a;
+  
+  --checkmark-after: #999;
+  
+  background: var(--bg-color)
+}
+body.dark {
+  --bg-color: #0f1e2c;
+  --elem-bg-color: #406080;
+  --fg-color: #ddd;
+  
+  --button-hover: #777f88;
+  --button-active: #468;
+  
+  --border-color: #bbb;
+  --thick-border-color: #ddd;
+  
+  --link-color: #1d3;
+  --link-visited-color: #1dd;
+  --link-active-color: #26d;
+  
+  --checkmark-after: #fff;
+}
 * {
   font-family: 'Open Sans', Helvetica, sans-serif;
-  font-size: 12pt;
+  font-size: 14pt;
+  background: var(--bg-color);
+  color: var(--fg-color)
 }
 h1 {
-  font-size: 22pt;
+  font-size: 28pt;
 }
 body {
-  margin: 1em;
-  padding: 0;
+  margin: 0;
+  padding: 1em;
+}
+html, body {
+  height: 100%;
 }
 select, input[type="text"], input[type="button"], input[type="number"], button, textarea {
-  border: 1px solid #AAA;
+  border: 1px solid var(--border-color);
   border-radius: 5px;
-  font-size: 12pt;
+  font-size: 13pt;
   outline: none;
   padding-left: 1px;
   padding-right: 1px;
@@ -27,8 +67,7 @@ input[type="text"], input[type="number"]{
   width: 15ch;
 }
 input[type="button"], button {
-  background-color: #FFF;
-  transition: 0.1s ease;
+  background-color: var(--bg-color);
   padding-left: 2px;
   padding-right: 2px;
   padding-top: 2px;
@@ -36,12 +75,11 @@ input[type="button"], button {
 }
 
 input[type="button"]:hover:enabled, button:hover:enabled {
-  background-color: #E6E6E6;
-  transition: 0.1s ease;
+  background-color: var(--button-hover);
 }
 
 input[type="button"]:active:enabled, button:active:enabled {
-  background-color: #DDDDDD;
+  background-color: var(--button-active);
 }
 
 .container {
@@ -63,12 +101,12 @@ input[type="button"]:active:enabled, button:active:enabled {
   left: 0;
   height: 16px;
   width: 16px;
-  background-color: #EEE;
-  border: 1px solid #AAA;
+  background-color: var(--elem-bg-color);
+  border: 1px solid var(--border-color);
   border-radius: 50%;
 }
 input:disabled ~ .checkmark {
-  background-color: #AAA;
+  background-color: var(--border-color);
 }
 .checkmark:after {
   content: "";
@@ -84,7 +122,7 @@ input:disabled ~ .checkmark {
 	width: 10px;
 	height: 10px;
 	border-radius: 50%;
-	background: #999;
+	background: var(--checkmark-after);
 }
 .no-border {
   border-style: hidden;
@@ -98,31 +136,31 @@ input:disabled ~ .checkmark {
   border-style: hidden;
 }
 a {
-  transition: 0.1s ease;
-}
-a:link {
-  color: #00E;
+  color: var(--link-color);
+  text-decoration: none;
 }
 a:visited {
-  color: #63B;
+  color: var(--link-visited-color);
 }
-a:hover:enabled {
-  color: #88F;
+a:hover {
+  color: var(--link-active-color);
+  text-decoration: underline;
 }
-a:active:enabled {
-  color: #00A;
+a:active {
+  color: var(--link-active-color);
+  text-decoration: underline;
 }
 table {
   border-collapse: collapse;
-  background-color: #FFF;
+  background-color: var(--bg-color);
 }
 td, th {
-  border: 1px solid #AAA;
+  border: 1px solid var(--border-color);
   padding: 8px;
   vertical-align: top;
 }
 th {
   padding: 10px;
   text-align: center;
-  background-color: #FFF;
+  background-color: var(--bg-color);
 }

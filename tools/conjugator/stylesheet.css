@@ -1,30 +1,30 @@
 .tab {
   overflow: hidden;
-  border: 1px solid #BBB;
-  background-color: #EEE;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
   border-radius: 4px 4px 0px 0px;
 }
 .tabbutton {
-  background-color: inherit;
+  background-color: var(--bg-color);
   border-radius: 0px;
   float: left;
   border: none;
   outline: none;
   cursor: pointer;
   padding: 14px 16px;
-  transition: 0.2s ease;
+  transition: 0.09s ease;
   font-size: 13pt;
 }
 .tabbutton:hover {
-  background-color: #DDD;
+  background-color: var(--button-hover);
 }
 .tabbutton[active=true]{
-  background-color: #CCC;
+  background-color: var(--button-active);
 }
 .content {
   display: none;
   padding: 16px;
-  border: 1px solid #BBB;
+  border: 1px solid var(--border-color);
   border-top: none;
   border-radius: 0px 0px 4px 4px;
 }

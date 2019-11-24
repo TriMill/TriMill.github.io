@@ -4,8 +4,8 @@
   grid-gap: 0 0;
 } 
 .item, .grid-title, .grid-header, .question{
-  background-color: #f0f0f0;
-  border: 1px solid #555;
+  background-color: var(--elem-bg-color);
+  border: 1px solid var(--border-color);
   padding: 5px;
   font-size: 14pt;
   text-align: center;
@@ -20,7 +20,7 @@
   text-align: left;
 }
 .item {
-  background-color: #fff;
+  background-color: var(--background-color);
   padding-left: 4.9vw;
   padding-top: 5px;
 }
