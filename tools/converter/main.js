@@ -28,6 +28,8 @@ function measureUpdate() {
     case 'area':   units = area.units;   select = area.select;   break;
     case 'time':   units = time.units;   select = time.select;   break;
     case 'volume': units = volume.units; select = volume.select; break;
+    case 'energy': units = energy.units; select = energy.select; break;
+    case 'computing': units = computing.units; select = computing.select; break;
   }
   updateUnits(units, select);
   recalc();
@@ -59,8 +61,11 @@ function recalc() {
     case 'area': m = area; break;
     case 'time': m = time; break;
     case 'volume': m = volume; break;
-
+    case 'energy': m = energy; break;
+    case 'computing': m = computing; break;
   }
+  console.log(m)
+
   let value = $('#val1').val();
   let result = 0;
 

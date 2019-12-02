@@ -30,6 +30,8 @@
     <option value="area">Area</option>
     <option value="time">Time</option>
     <option value="volume">Volume</option>
+		<option value="energy">Energy</option>
+		<option value="computing">Computing</option>
   </select><br><br>
   <input id="val1" type="text" onchange="recalc();" value="1">
   <select id="unit1" onchange="recalc();"></select>
@@ -39,8 +41,8 @@
   <input type="button" value="Switch" onclick="swap();"><br>
   <p>Results may be rounded or have noise in the last decimal digits.
     If a result ends with a sequence of '9's, you should round up.
-    If it ends with '0's, you should ignore them. When converting from really
-    small units to really large ones, the result may be zero.</p>
+    If it ends with '0's, you should ignore them. When converting from very
+    small units to very large ones, the result may be zero.</p>
   </table>
 </body>
 </html>

@@ -3,7 +3,7 @@ let length = {
     'Decimeter', 'Meter', 'Decameter', 'Hectometer', 'Kilometer', 'Megameter',
     'Gigameter', 'Barleycorn', 'Thou', 'Digit', 'Inch', 'Palm', 'Stick', 'Hand',
     'Link', 'Foot', 'Yard', 'Rod', 'Fathom', 'Chain', 'Shackle', 'Cable', 'Furlong',
-    'Mile', 'Nautical Mile', 'League', 'AU', 'Light-Year'],
+    'Mile', 'Nautical Mile', 'League', 'AU', 'Light-Year', 'Smoot'],
   common: 'Meter',
   ctype: 'mul',
   select: ['Meter', 'Foot'],
@@ -11,7 +11,7 @@ let length = {
     0.1, 1, 10, 100, 1000, 1e+6,
     1e+9, 127/15000, 0.0000254, 0.01905, 0.0254, 0.0508, 0.0762, 0.1016,
     0.201168, 0.3048, 0.9144, 5.0292, 1.852, 20.1168, 27.432, 185.2, 201.168,
-    1609.344, 1852, 4828.032, 149597870700, 9460730472580800],
+    1609.344, 1852, 4828.032, 149597870700, 9460730472580800, 1.7],
   custom: [['Foot', 'Inch', 12], ['Yard', 'Foot', 3], ['Mile', 'Foot', 5280],
   ['Inch', 'Centimeter', 2.54], ['Mile', 'Kilometer', 1.609344]]
 };
@@ -37,9 +37,8 @@ let temp = {
 };
 
 let mass = {
-  units: ['Picogram', 'Nanogram', 'Microgram', 'Milligram', 'Centigram', 'Decigram',
-    'Gram', 'Decagram', 'Hectogram', 'Kilogram', 'Metric Tonne', 'Ounce', 'Pound',
-    'Slug', 'Stone', 'US Ton', 'Solar Mass', 'Earth Mass'],
+  units: ['Picogram', 'Nanogram', 'Microgram', 'Milligram', 'Centigram', 'Decigram', 
+    'Gram', 'Decagram', 'Hectogram', 'Kilogram', 'Metric tonne', 'Ounce', 'Pound', 'Slug', 'Stone', 'US ton', 'Solar mass', 'Earth mass'],
   common: 'Kilogram',
   ctype: 'mul',
   select: ['Kilogram', 'Pound'],
@@ -50,12 +49,12 @@ let mass = {
 };
 
 let area = {
-  units: ['Square Millimeter', 'Square Centimeter', 'Square Meter', 'Hectare',
-    'Square Kilometer', 'Square Inch', 'Square Foot', 'Square Yard', 'Square Mile',
+  units: ['Square millimeter', 'Square centimeter', 'Square meter', 'Hectare',
+    'Square kilometer', 'Square inch', 'Square foot', 'Square yard', 'Square mile',
     'Acre'],
-  common: 'Square Meter',
+  common: 'Square meter',
   ctype: 'mul',
-  select: ['Square Kilometer', 'Square Mile'],
+  select: ['Square kilometer', 'Square mile'],
   conversions: [1e-12, 1e-10, 1e-6, 0.01, 1, 6.4516e-10, 9.290304e-8, 8.3612736e-7,
     2.589988110336, 0.0040468564224],
   custom: []
@@ -63,9 +62,9 @@ let area = {
 
 let time = {
   units: ['Microsecond', 'Millisecond', 'Second', 'Minute', 'Hour', 'Day', 'Week',
-    'Fortnight', 'Siderial Month', 'Lunar Month', '30 Days', 'Month', 'Quarter',
-    'Common Year', 'Julian Year', 'Year', 'Sidereal Year', 'Leap Year', 'Decade',
-    'Average Human Life', 'Century', 'Millenium'],
+    'Fortnight', 'Siderial month', 'Lunar month', '30 Days', 'Month', 'Quarter',
+    'Common year', 'Julian year', 'Year', 'Sidereal year', 'Leap Year', 'Decade',
+    'Average human life', 'Century', 'Millenium'],
   common: 'Day',
   ctype: 'mul',
   select: ['Year', 'Second'],
@@ -78,15 +77,30 @@ let time = {
 
 let volume = {
   units: ['Microliter', 'Milliliter', 'Centiliter', 'Deciliter', 'Liter',
-    'Decaliter', 'Hectoliter', 'Kiloliter', 'Minim', 'Fluid Dram', 'Teaspoon',
-    'Tablespoon', 'Fluid Ounce', 'Shot', 'Cup', 'Pint', 'Quart', 'Gallon',
-    'Barrel', 'Hogshead'],
+    'Decaliter', 'Hectoliter', 'Kiloliter', 'Cubic inch', 'Cubic foot', 'Cubic yard', 'Minim', 'Fluid dram', 'Teaspoon', 'Tablespoon', 'Fluid ounce', 'Shot', 'Cup', 'Pint', 'Quart', 'Gallon', 'Barrel', 'Hogshead', 'Cord'],
   common: 'Milliliter',
   ctype: 'mul',
   select: ['Liter', 'Cup'],
-  conversions: [0.001, 1, 10, 100, 1000,
-    10000, 100000, 1000000, 0.061611519921875, 	3.6966911953125, 4.92892159375,
-    14.78676478125, 29.5735295625, 44.36029434375, 236.5882365, 473.176473, 946.352946, 3785.411784,
-    119240.471196, 238480.942392],
-  custom: []
+  conversions: [0.001, 1, 10, 100, 1000, 10000, 100000, 1000000, 16.387064, 28316.8, 
+    764555, 0.061611519921875, 	3.6966911953125, 4.92892159375, 14.78676478125, 29.5735295625, 30, 44.36029434375, 236.5882365, 473.176473, 946.352946, 3785.411784,119240.471196, 238480.942392, 3624556.3648],
+  custom: [['Cubic foot', 'Cubic inch', 1728], ['Cubic yard', 'Cubic foot', 27], ['Tablespoon', 'Teaspoon', 3], ['Fluid ounce', 'Cubic inch', 1.8046875], ['Cup', 'Tablespoon', 16], ['Cup', 'Teaspoon', 48]]
 };
+
+let energy = {
+  units: ['Microjoule', 'Millijoule', 'Joule', 'Kilojoule', 'Megajoule', 'Gigajoule', 'Terajoule', 'Exajoule', 'Microwatt-hour', 'Milliwatt-hour', 'Watt-hour', 'Kilowatt-hour', 'Megawatt-hour', 'Gigawatt-hour', 'Terawatt-hour', 'Calorie', 'Kilocalorie', 'Foot-pound'],
+  common: 'Joule',
+  ctype: 'mul',
+  select: ['Kilowatt-hour', 'Joule'],
+  conversions: [1e-6, 0.001, 1, 1000, 1e6, 1e9, 1e12, 1e15, 0.0036, 3.6, 3600, 3.6e6, 3.6e9, 3.6e12, 3.6e15, 4.184, 4184, 1.35582],
+  custom: []
+}
+
+let computing = {
+  units: ['Bit', 'Kilobit', 'Megabit', 'Gigabit', 'Terabit', 'Petabit', 'Exabit', 'Zettabit', 'Yottabit', 'Nibble', 'Byte', 'Kilobyte', 'Megabyte', 'Gigabyte', 'Terabyte', 'Petabyte', 'Exabyte', 'Zettabyte', 'Yottabyte'],
+  common: 'Byte',
+  ctype: 'mul',
+  select: ['Gigabyte', 'Megabyte'],
+  conversions: [1/8, 2**7, 2**17, 2**27, 2**37, 2**47, 2**57, 2**67, 2**77, 1/2, 1,  
+    2**10, 2**20, 2**30, 2**40, 2**50, 2**60, 2**70, 2**80],
+  custom: []
+}
