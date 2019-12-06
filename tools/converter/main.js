@@ -64,7 +64,6 @@ function recalc() {
     case 'energy': m = energy; break;
     case 'computing': m = computing; break;
   }
-  console.log(m)
 
   let value = $('#val1').val();
   let result = 0;

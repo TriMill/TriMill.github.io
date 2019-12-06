@@ -29,8 +29,8 @@ body.dark {
   --border-color: #bbb;
   --thick-border-color: #ddd;
   
-  --link-color: #1d3;
-  --link-visited-color: #1dd;
+  --link-color: #1dd;
+  --link-visited-color: #1d3;
   --link-active-color: #26d;
   
   --checkmark-after: #fff;
