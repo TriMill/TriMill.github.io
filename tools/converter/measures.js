@@ -96,11 +96,10 @@ let energy = {
 }
 
 let computing = {
-  units: ['Bit', 'Kilobit', 'Megabit', 'Gigabit', 'Terabit', 'Petabit', 'Exabit', 'Zettabit', 'Yottabit', 'Nibble', 'Byte', 'Kilobyte', 'Megabyte', 'Gigabyte', 'Terabyte', 'Petabyte', 'Exabyte', 'Zettabyte', 'Yottabyte'],
+  units: ['Bit', 'Kibibit', 'Kilobit', 'Mebibit', 'Megabit', 'Gibibit', 'Gigabit', 'Tebibit', 'Terabit', 'Pebibit', 'Petabit', 'Ebibit', 'Exabit', 'Zebibit', 'Zettabit', 'Yobibit', 'Yottabit', 'Nibble', 'Byte', 'Kibibyte', 'Kilobyte', 'Mebibyte', 'Megabyte', 'Gibibyte', 'Gigabyte', 'Tebibyte', 'Terabyte', 'Pebibyte', 'Petabyte', 'Ebibyte', 'Exabyte', 'Zebibyte', 'Zettabyte','Yobibyte', 'Yottabyte'],
   common: 'Byte',
   ctype: 'mul',
   select: ['Gigabyte', 'Megabyte'],
-  conversions: [1/8, 2**7, 2**17, 2**27, 2**37, 2**47, 2**57, 2**67, 2**77, 1/2, 1,  
-    2**10, 2**20, 2**30, 2**40, 2**50, 2**60, 2**70, 2**80],
+  conversions: [1/8, 2**7, 10**3/8, 2**17, 10**6/8, 2**27, 10**9/8, 2**37, 10**12/8, 2**47, 10**15/8, 2**57, 10**18/8, 2**67, 10**21/8, 2**77, 10**24/8, 1/2, 1, 2**10, 10**3, 2**20, 10**6, 2**30, 10**9, 2**40, 10**12, 2**50, 10**15, 2**60, 10**18, 2**70, 10*21, 2**80, 10**24],
   custom: []
 }
