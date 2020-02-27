@@ -19,21 +19,21 @@
   background: var(--bg-color)
 }
 body.dark {
-  --bg-color: #0f1e2c;
-  --elem-bg-color: #406080;
-  --fg-color: #ddd;
+  --bg-color: #191b1c;
+  --elem-bg-color: #4c5455;
+  --fg-color: #e5e8e8;
   
-  --button-hover: #777f88;
-  --button-active: #468;
+  --button-hover: #7f8c8d;
+  --button-active: #1abc9c;
   
   --border-color: #bbb;
-  --thick-border-color: #ddd;
+  --thick-border-color: #e5e8e8;
   
-  --link-color: #1dd;
-  --link-visited-color: #1d3;
-  --link-active-color: #26d;
+  --link-color: #16c8b4;
+  --link-visited-color: #1cf090;
+  --link-active-color: #1d99f3;
   
-  --checkmark-after: #fff;
+  --checkmark-after: #e5e8e8;
 }
 * {
   font-family: 'Open Sans', Helvetica, sans-serif;
