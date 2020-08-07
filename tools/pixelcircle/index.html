@@ -21,6 +21,14 @@
   </style>
 </head>
 <body>
+	<script>
+	document.getElementById("defaultCanvas0").onwheel = function(event){
+    	event.preventDefault();
+	};
+	document.getElementById( "canvasId" ).onmousewheel = function(event){
+    	event.preventDefault();
+	};
+	</script>
   <div>
     Radius:
     <input type="range" min="0" max="100" value="5" class="slider" id="radius-slider" oninput="updateRadius(this.value)" width="1000px" step="0.1">
@@ -37,5 +45,6 @@
 	<div>
 		<input type="button" id="reset" onclick="resetMotion();" value="Reset motion">
 	</div>
+	
 </body>
 </html>
