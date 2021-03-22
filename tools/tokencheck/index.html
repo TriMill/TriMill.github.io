@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="TriMill">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Token check - TriMill</title>
+
+	<script type="text/javascript" src="../../universal-script.js"> </script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jsrsasign/8.0.20/jsrsasign-all-min.js"></script>
+	<link rel="stylesheet" href="../../stylesheet.css" id="main">
+</head>
+<body>
+	<h1>Token check</h1>
+	<label for="upload">Upload token here:</label>
+	<input type="file" id="upload" />
+	<div id="valid" hidden>
+		<h2 id="valid_header">Token valid</h2>
+		<div>User ID: <span id="success_userid"></span></div>
+		<div>Token ID: <span id="success_tokenid"></span></div>
+		<div>Created at <span id="success_created"></span></div>
+		<div>Expires at <span id="success_expires"></span></div>
+		<div>Description: <span id="success_description"></span></div>
+	</div>
+	<div id="invalid" hidden>
+		<h2>Token invalid</h2>
+	</div>
+	<script src="main.js"></script>
+</body>
+</html>
