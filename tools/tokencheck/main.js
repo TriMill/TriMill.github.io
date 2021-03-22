@@ -37,7 +37,7 @@ function checkToken(token_text) {
 
 			document.getElementById("success_userid").innerHTML = json.owner;
 			document.getElementById("success_tokenid").innerHTML = json.id;
-			document.getElementById("success_description").innerHTML = json.id;
+			document.getElementById("success_description").innerHTML = json.description;
 			let created = new Date(json.created * 1000);
 			let expires = new Date((json.created + json.delta) * 1000);
 			let now = new Date();
