@@ -26,6 +26,9 @@
 			xhr.onload = () => {
 				document.getElementById("number").innerHTML = xhr.responseText;
 			}
+			xhr.onerror = () => {
+				document.getElementById("number").innerHTML = "Error loading number. Try visiting <a href=\"https://23.239.13.217:12321/\">https://23.239.13.217:12321/</a> and accepting the certificate manually."
+			}
 		}
 
 		function makegoup() {
