@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="TriMill">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Number - TriMill</title>
+
+	<script type="text/javascript" src="../../universal-script.js"> </script>
+	
+	<link href="../../stylesheet.css" type="text/css" rel="stylesheet" />
+  </style>
+</head>
+<body>
+	<h1>Number</h1>
+	<div id="number">?</div>
+	<div>
+		<input type="button" value="Make go up" id="button" onclick="makegoup();" />
+	</div>
+	<script>
+		window.onload = () => {
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", "http://23.239.13.217:12321/");
+			xhr.send();
+			xhr.onload = () => {
+				document.getElementById("number").innerHTML = xhr.responseText;
+			}
+		}
+
+		function makegoup() {
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", "http://23.239.13.217:12321/");
+			xhr.send();
+			xhr.onload = () => {
+				document.getElementById("number").innerHTML = xhr.responseText;
+			}
+		}
+	</script>
+</body>
+</html>
