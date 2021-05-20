@@ -21,7 +21,7 @@
 	<script>
 		window.onload = () => {
 			var xhr = new XMLHttpRequest();
-			xhr.open("GET", "http://23.239.13.217:12321/");
+			xhr.open("GET", "https://23.239.13.217:12321/");
 			xhr.send();
 			xhr.onload = () => {
 				document.getElementById("number").innerHTML = xhr.responseText;
@@ -30,7 +30,7 @@
 
 		function makegoup() {
 			var xhr = new XMLHttpRequest();
-			xhr.open("POST", "http://23.239.13.217:12321/");
+			xhr.open("POST", "https://23.239.13.217:12321/");
 			xhr.send();
 			xhr.onload = () => {
 				document.getElementById("number").innerHTML = xhr.responseText;
